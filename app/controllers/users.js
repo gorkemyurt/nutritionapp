@@ -13,3 +13,8 @@ exports.login = function(req,res){
 	}
 
 }
+
+
+exports.incomingmail = function(req, res){
+	console.log(req.body);
+}

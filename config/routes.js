@@ -31,6 +31,9 @@ module.exports = function (app, passport) {
 	});
 	
 	app.get('/', users.login);
+
+	app.post('/incomingmail', users.getEmail);
+
 	// app.get('/projects', posts.projects);
 	// app.get('/posts', posts.postlist);
 }
