@@ -16,6 +16,6 @@ exports.login = function(req,res){
 
 
 exports.getEmail = function(req, res){
-	console.log("GORKEM GORKEM");
 	console.log(req.body);
+	res.send(200);
 }
