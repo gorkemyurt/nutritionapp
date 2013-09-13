@@ -17,7 +17,11 @@ exports.login = function(req,res){
 
 
 exports.getEmail = function(req, res){
-	console.log(req.body);
+	// console.log(req.body);
+	console.log("from   "  + req.body.headers.envelope.from);
+	console.log("plain  " + req.body.headers:plain);
+
+
 	// var form = new formidable.IncomingForm()
  //  	form.parse(req, function(err, fields, files) {
 	//     console.log(fields.to)
