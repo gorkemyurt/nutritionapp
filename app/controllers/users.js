@@ -17,12 +17,13 @@ exports.login = function(req,res){
 
 
 exports.getEmail = function(req, res){
-	var form = new formidable.IncomingForm()
-  	form.parse(req, function(err, fields, files) {
-	    console.log(fields.to)
-	    console.log(fields.from)
-	    console.log(fields.subject)
-	    res.writeHead(200, {'content-type': 'text/plain'})
-	    res.end('Message Received. Thanks!\r\n')
-  	})
+	console.log(req.body);
+	// var form = new formidable.IncomingForm()
+ //  	form.parse(req, function(err, fields, files) {
+	//     console.log(fields.to)
+	//     console.log(fields.from)
+	//     console.log(fields.subject)
+	//     res.writeHead(200, {'content-type': 'text/plain'})
+	//     res.end('Message Received. Thanks!\r\n')
+ //  	})
 }
