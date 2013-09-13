@@ -18,7 +18,7 @@ module.exports = function (passport, config) {
 	passport.use(new GoogleStrategy({
 		clientID: "252616041049.apps.googleusercontent.com",
     	clientSecret: "ghJDNxZMw1jEJc-6UnFAMaz4",
-	    callbackURL: 'http://localhost:3000/oauth2callback'	    // realm: 'http://localhost:3000'
+	    callbackURL: 'http://gorkemnutrition.herokuapp.com/oauth2callback'	    // realm: 'http://localhost:3000'
 	  },
 	  function(accessToken,refreshToken , profile, done) {
 	  	profile.accessToken = accessToken;
