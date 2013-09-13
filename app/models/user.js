@@ -15,17 +15,19 @@ userSchema.statics = {
 
 	findOrCreate : function ( query , profile , cb) {
 		var that = this;
-		console.log(profile.id);
+		// console.log(profile._raw);
+		// console.log(profile.emails[0].value);
 		this.find({googleID : profile.id})
 			.exec(function (err, user){
 				if(user.length != 0){
+					console.log(user);
 					return user;
 				}
 				else{
 					var newUser = new that({
 						googleID : profile.id,
 						accessToken : profile.accessToken,
-						email : profile._raw.email
+						email : profile.emails[0].value
 					});
 					newUser.save(function (err) {
 						if(err)console.log(err);
