@@ -20,10 +20,10 @@ module.exports = {
   },
   staging: {
     root: rootPath,
-    db: 'mongodb://heroku_app18100548:eqcjc5ris9praogb1p5r7lasn1@ds043378.mongolab.com:43378/heroku_app18100548'
+    db: 'mongodb://heroku_app18101433:p9ojlriie26t4atd270dp9v44s@ds043398.mongolab.com:43398/heroku_app18101433'
   },
   production: {
     root: rootPath,
-    db: 'mongodb://heroku_app18100548:eqcjc5ris9praogb1p5r7lasn1@ds043378.mongolab.com:43378/heroku_app18100548'
+    db: 'mongodb://heroku_app18101433:p9ojlriie26t4atd270dp9v44s@ds043398.mongolab.com:43398/heroku_app18101433'
   }
 }
