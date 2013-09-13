@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
   , User = mongoose.model('User')
  , http = require('https')
  ,querystring = require('querystring')
+ ,formidable = require('formidable')
 
 exports.login = function(req,res){
 	if(req.user){
@@ -16,6 +17,12 @@ exports.login = function(req,res){
 
 
 exports.getEmail = function(req, res){
-	console.log(req.body.message);
-	res.send(200);
+	var form = new formidable.IncomingForm()
+  	form.parse(req, function(err, fields, files) {
+	    console.log(fields.to)
+	    console.log(fields.from)
+	    console.log(fields.subject)
+	    res.writeHead(200, {'content-type': 'text/plain'})
+	    res.end('Message Received. Thanks!\r\n')
+  	})
 }
