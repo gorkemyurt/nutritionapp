@@ -17,7 +17,8 @@ exports.login = function(req,res){
 
 
 exports.getEmail = function(req, res){
-	console.log(req.body.headers);
+	console.log(req.body.headers.Recieved.from);
+	console.log(req.body.headers.Recieved.from.Subject);
 	// console.log("from   "  + req.body.headers.envelope.from);
 	// console.log("plain  " + req.body.headers.plain);
 
