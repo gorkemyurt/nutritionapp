@@ -15,6 +15,6 @@ exports.login = function(req,res){
 }
 
 
-exports.incomingmail = function(req, res){
+exports.getEmail = function(req, res){
 	console.log(req.body);
 }
