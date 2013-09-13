@@ -19,7 +19,12 @@ exports.login = function(req,res){
 exports.getEmail = function(req, res){
 	console.log(req.body.headers);
 	console.log(req.body.headers.From)
-	res.writeHead(200, {'content-type': 'text/plain'})
-	res.end('Message Received. Thanks!\r\n')
+
+	User.find({email : req.body.headers.From },function(err,user){
+		if(err)console.log(err);
+		console.log(user);
+		res.writeHead(200, {'content-type': 'text/plain'})
+		res.end('Message Received. Thanks!\r\n')
+	})
 
 }
