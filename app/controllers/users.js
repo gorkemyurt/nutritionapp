@@ -16,6 +16,10 @@ exports.login = function(req,res){
 
 
 exports.getEmail = function(req, res){
-	console.log(req.body);
+	parsedBody = JSON.parse(req.body)
+	console.log(parsedBody.from)
+	console.log(parsedBody.headers['Subject'])
+	console.log(parsedBody.plain)
+	console.log(parsedBody.html)
 	res.send(200);
 }
