@@ -16,7 +16,7 @@ exports.login = function(req,res){
 
 
 exports.getEmail = function(req, res){
-	parsedBody = JSON.parse(req.body)
+	var parsedBody = JSON.parse(req.body)
 	console.log(parsedBody.from)
 	console.log(parsedBody.headers['Subject'])
 	console.log(parsedBody.plain)
