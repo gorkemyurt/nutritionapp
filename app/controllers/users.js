@@ -17,8 +17,8 @@ exports.login = function(req,res){
 exports.emails = function(req,res){
 	// console.log(req.user);
 	User.findOne({googleID : req.user.id},function(err, user){
-		console.log(user);
-		console.log(user.SentEmails);
+		// console.log(user);
+		// console.log(user.SentEmails);
 		res.send(user.SentEmails);
 	})
 }
