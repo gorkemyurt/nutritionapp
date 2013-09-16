@@ -9,12 +9,12 @@ require.config({
     'marionette' : 'lib/backbone.marionette',
     'localStorage' : 'lib/backbone.localStorage',
     'less' : 'lib/less',
-    'User' : 'models/user',
-    "Users" : 'collections/users',
+    'Email' : 'models/email',
+    "Emails" : 'collections/emails',
     "FormView" : 'views/FormView',
-    "UsersView" : 'views/UsersView',
-    "UserView" : 'views/UserView',
-    "NoUserView" : 'views/NoUserView',
+    "EmailsView" : 'views/EmailsView',
+    "EmailView" : 'views/EmailView',
+    "NoEmailView" : 'views/NoEmailView',
     "MyApp" : 'app'
 
   },
@@ -50,6 +50,7 @@ require(
   ],
   function($, _, Backbone, jqueryui, less, Marionette, MyApp) {
     $('.sendEmail').on('click',function(){
+        console.log("why is this not working");
         $.ajax({
           type: "POST",
           url: '/incomingFake',

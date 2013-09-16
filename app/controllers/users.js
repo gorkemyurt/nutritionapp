@@ -14,6 +14,15 @@ exports.login = function(req,res){
 
 }
 
+exports.emails = function(req,res){
+	// console.log(req.user);
+	User.findOne({googleID : req.user.id},function(err, user){
+		console.log(user);
+		console.log(user.SentEmails);
+		res.send(user.SentEmails);
+	})
+}
+
 
 exports.getEmail = function(req, res){
 	console.log(req.body);
@@ -37,12 +46,12 @@ exports.getFake = function(req, res){
 	var senderEmail = "yurtseven.gorkem@gmail.com";
 	var email = {
 		From : senderEmail,
-		Subject : "Lunch",
-		Body : "I had chipotle today for lunch",
+		Subject : "ambulance",
+		Body : "they are always very very laud",
 		Date: new Date(),
 	}
 
-	User.findAndStoreEmail(senderEmail, req.user.profile, email ,function(){
+	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.writeHead(200, {'content-type': 'text/plain'})
     	res.end('Message Received. Thanks!\r\n')
 	})
