@@ -23,9 +23,13 @@ exports.emails = function(req,res){
 	})
 }
 
+// function parseEmailForFoodItems(body){
+
+
+// }
+
 
 exports.getEmail = function(req, res){
-	console.log(req.body);
 	console.log(req.body.plain);
 	var senderEmail  = req.body.headers.From.split(">")[0].split("<")[1];
 	var email = {
@@ -41,6 +45,8 @@ exports.getEmail = function(req, res){
 
 
 }
+
+
 
 exports.getFake = function(req, res){
 	var senderEmail = "yurtseven.gorkem@gmail.com";

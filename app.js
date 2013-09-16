@@ -30,7 +30,7 @@ var app = require('express')()
 // express settings
 require('./config/express')(app, config, passport)
 
-require('./config/passport')(passport, config)
+require('./config/passport')(passport, config, env)
 
 // Bootstrap routes
 require('./config/routes')(app,passport)

@@ -4,31 +4,36 @@ head
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     title  Gorkem 
     link(rel='stylesheet/less', type='text/css', href='/stylesheets/style.less')
-    link(rel='stylesheet', type='text/css', href='/stylesheets/foundation.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/foundation.min.css')
 
 
   body
 
     header
-        section
-            | Hello Everyone !
-        section
-        #form
-        #list
-        <a href="#" class="button sendEmail">Send Email</a>
+        | Hello Everyone 
+    section
+        div.row
+            div.large-3.columns 
+                <a href="#" class="button sendEmail">Send Email</a>
+            div.large-6.columns 
+                #list
+            div.large-3.columns 1
+
 
     script(id="EmailView", type="text/template")
-        <div class="panel center">
-        <p> Subject: <%= Subject %> </p>
-        <p> Body: <%= Body %> </p>
+        <div class="panel">
         <p> Date/Time: <%= Date %> </p>
+        <div class="meal-info">
+        <p> Meal Name: <%= Subject %> </p>
+        <p> Food Consumption: <%= Body %> </p>
+        </div>
         </div>
 
     script(id="EmailsView", type="text/template")
         <h2> Emails </h2>
 
     script(id="noUsersView", type="text/template")
-        <h2> Loading ... </h2>
+        <h2> No Emails.. </h2>
 
     script(src='/javascripts/lib/require.js', data-main='/javascripts/application.js')
     script(defer, src='/javascripts/foundation_javascripts/foundation.min.js')
