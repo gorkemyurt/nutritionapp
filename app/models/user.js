@@ -1,6 +1,7 @@
 var mongoose = require('mongoose')
     ,Schema = mongoose.Schema
-
+    , Email = mongoose.model('Email')
+   , EmailSchema = require('../models/email.js');
 
 var userSchema = new Schema({
 	googleID : String,
@@ -8,6 +9,7 @@ var userSchema = new Schema({
 	email : String,
 	openId: Number,
 	phoneNumber: String,
+	SentEmails : [EmailSchema]
 	// Logs : [{type: Schema.ObjectId, ref: 'events'}]
 });
 
@@ -36,7 +38,28 @@ userSchema.statics = {
 				
 				}
 			})
+	},
+
+	findAndStoreEmail : function (senderEmail , profile , incomingEmail, cb){
+		this.find({email : senderEmail})
+			.exec(function (err, user){
+				if(user.length != 0){
+					var newEmail = new Email(incomingEmail);
+					newEmail.save(function (err){
+						user[0].SentEmails.push(newEmail);
+						user[0].save();
+					})
+				}
+				else{
+					return "user doesnt exist!"
+				
+				}
+			})
+	
+
 	}
+
+
 
 }
 

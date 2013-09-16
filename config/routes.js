@@ -34,6 +34,8 @@ module.exports = function (app, passport) {
 
 	app.post('/incomingmail', users.getEmail);
 
+	app.post('/incomingFake', users.getFake);
+
 	// app.get('/projects', posts.projects);
 	// app.get('/posts', posts.postlist);
 }

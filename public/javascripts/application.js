@@ -49,5 +49,14 @@ require(
 
   ],
   function($, _, Backbone, jqueryui, less, Marionette, MyApp) {
+    $('.sendEmail').on('click',function(){
+        $.ajax({
+          type: "POST",
+          url: '/incomingFake',
+        });
+    });
+
 
   });
+
+
