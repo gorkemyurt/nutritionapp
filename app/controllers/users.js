@@ -43,7 +43,8 @@ exports.getFake = function(req, res){
 	}
 
 	User.findAndStoreEmail(senderEmail, req.user.profile, email ,function(){
-		res.send(200);
+		res.writeHead(200, {'content-type': 'text/plain'})
+    	res.end('Message Received. Thanks!\r\n')
 	})
 
 
