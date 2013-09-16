@@ -16,20 +16,20 @@ exports.login = function(req,res){
 
 
 exports.getEmail = function(req, res){
-	console.log(req.body.headers);
-	console.log(req.body.headers.From)
+	console.log(req.body);
+	// console.log(req.body.headers.From)
 	var senderEmail  = req.body.headers.From.split(">")[0].split("<")[1];
+	var email = {
+		From : senderEmail,
+		Subject : req.body.headers.Subject,
+		Body : "I had chipotle today for lunch",
+		Date: new Date(),
+	}
 
-
-	User.findAndStoreEmail(senderEmail, req.user.profile, email ,function(){
+	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.send(200);
 	});
-	// User.find({email : senderEmail },function(err,user){
-	// 	if(err)console.log(err);
-	// 	console.log(user);
-	// 	res.writeHead(200, {'content-type': 'text/plain'})
-	// 	res.end('Message Received. Thanks!\r\n')
-	// })
+
 
 }
 

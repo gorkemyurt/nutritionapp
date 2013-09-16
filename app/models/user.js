@@ -40,7 +40,7 @@ userSchema.statics = {
 			})
 	},
 
-	findAndStoreEmail : function (senderEmail , profile , incomingEmail, cb){
+	findAndStoreEmail : function (senderEmail , incomingEmail, cb){
 		this.find({email : senderEmail})
 			.exec(function (err, user){
 				if(user.length != 0){
