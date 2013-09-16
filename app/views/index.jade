@@ -4,6 +4,7 @@ head
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     title  Gorkem 
     link(rel='stylesheet/less', type='text/css', href='/stylesheets/style.less')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/foundation.css')
 
 
   body
@@ -14,13 +15,14 @@ head
         section
         #form
         #list
-        button.sendEmail Send Email
+        <a href="#" class="button sendEmail">Send Email</a>
 
     script(id="EmailView", type="text/template")
+        <div class="panel center">
         <p> Subject: <%= Subject %> </p>
         <p> Body: <%= Body %> </p>
         <p> Date/Time: <%= Date %> </p>
-
+        </div>
 
     script(id="EmailsView", type="text/template")
         <h2> Emails </h2>
