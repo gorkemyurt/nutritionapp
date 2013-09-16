@@ -17,12 +17,12 @@ exports.login = function(req,res){
 
 exports.getEmail = function(req, res){
 	console.log(req.body);
-	// console.log(req.body.headers.From)
+	console.log(req.body.plain);
 	var senderEmail  = req.body.headers.From.split(">")[0].split("<")[1];
 	var email = {
 		From : senderEmail,
 		Subject : req.body.headers.Subject,
-		Body : "I had chipotle today for lunch",
+		Body : req.body.plain,
 		Date: new Date(),
 	}
 
