@@ -23,57 +23,63 @@ exports.emails = function(req,res){
 	})
 }
 
+function noNumberParse(foodItems) {
+	var foodItemsObject = [];
+	for  (var item in foodItems){
+		var tempnumber = foodItems[item].match(/[0-9]/g);
+		if(tempnumber){
+			var temp = foodItems[item].split(/[0-9]/)
+			var tempobject = {Name : temp[0] , HealthRate : parseInt(tempnumber)}
+			foodItemsObject.push(tempobject);
+		}
+		else{
+			var tempobject = {Name : foodItems[item] , HealthRate : parseInt(tempnumber)}
+			foodItemsObject.push(tempobject);
+		}
+	}
+	return foodItemsObject;
+}
+
+function numberParse(foodItems){
+	var foodItemsObject = [];
+	for  (var item in foodItems){
+		if(foodItems[item] != "" || "/n"){
+			var tempobject = {Name : foodItems[item] , HealthRate : numbersList[item]}
+			console.log(tempobject);
+			foodItemsObject.push(tempobject);
+		}
+	}
+	return foodItemsObject;
+}
+
+
+
 function parseEmailForFoodItems(body){
 	var foodItems = [];
 	var foodItemsObject = [];
 	var numbersList = body.match(/[0-9]/g);
-	var flag = true;
+	
 	if(body.indexOf("\n") == (body.length - 1)  ){
 		body = body.slice(0,-2); 
 	}
-	console.log(body);
 	if(body.indexOf("\n") != -1){
 		console.log("contains an enter");
 		foodItems = body.split("\n");
+		return noNumberParse(foodItems);
 	}
 	else if(body.indexOf(",") != -1){
+		console.log("contains a coma");
 		foodItems = body.split(",");
+		return noNumberParse(foodItems);
 	}
-	else {
+	else if (numbersList.length != 0){
+		console.log("contains a number");
 		flag = false;
 		foodItems = body.split(/[0-9]/);
+		return numberParse(foodItems);
 
 	}
-	if(flag){
-		console.log("flag is true");
-		for  (var item in foodItems){
-			var tempnumber = foodItems[item].match(/[0-9]/g);
-			if(tempnumber){
-				var temp = foodItems[item].split(/[0-9]/)
-				var tempobject = {Name : temp[0] , HealthRate : parseInt(tempnumber)}
-				foodItemsObject.push(tempobject);
-			}
-			else{
-				var tempobject = {Name : foodItems[item] , HealthRate : parseInt(tempnumber)}
-				foodItemsObject.push(tempobject);
-			}
-		}
-	}
-	else{
-		console.log("no flag");
-		for  (var item in foodItems){
-			if(foodItems[item] != "" || "/n"){
-				var tempobject = {Name : foodItems[item] , HealthRate : numbersList[item]}
-				console.log(tempobject);
-				foodItemsObject.push(tempobject);
-			}
-		}
-	}
-	return foodItemsObject;
-
 }
-
-
 
 exports.getEmail = function(req, res){
 	console.log(req.body.plain);
@@ -100,8 +106,8 @@ exports.getFake = function(req, res){
 	var email = {
 		From : senderEmail,
 		Subject : "ambulance",
-		Body : "chipotle 2 apple salad 1",
-		FoodItems : parseEmailForFoodItems("chipotle 2 apple salad 1"),
+		Body : "chipotle apple salad 1/n",
+		FoodItems : parseEmailForFoodItems("oranges 2 \n salad 1"),
 		Date: new Date(),
 	}
 
