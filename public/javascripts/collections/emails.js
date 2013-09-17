@@ -14,7 +14,9 @@ define([
 	    model : emailModel,
 
 	   	initialize : function() {
-	   		this.fetch();
+	   		this.fetch().complete(function(){
+	   			console.log(this);	
+	   		});
 	   	}
 	
 	});

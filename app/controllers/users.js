@@ -23,10 +23,49 @@ exports.emails = function(req,res){
 	})
 }
 
-// function parseEmailForFoodItems(body){
+function parseEmailForFoodItems(body){
+	var foodItems = [];
+	var foodItemsObject = [];
+	var numbersList = body.match(/[0-9]/g);
+	var flag = true;
+	if(body.indexOf("\n") != -1){
+		foodItems = body.split("\n");
+	}
+	else if(body.indexOf(",") != -1){
+		foodItems = body.split(",");
+	}
+	else {
+		flag = false;
+		foodItems = body.split(/[0-9]/);
 
+	}
+	console.log(foodItems)
+	if(flag){
+		for  (var item in foodItems){
+			var tempnumber = foodItems[item].match(/[0-9]/g);
+			if(tempnumber){
+				var temp = foodItems[item].split(/[0-9]/)
+				var tempobject = {Name : temp[0] , HealthRate : parseInt(tempnumber)}
+				foodItemsObject.push(tempobject);
+			}
+			else{
+				var tempobject = {Name : foodItems[item] , HealthRate : parseInt(tempnumber)}
+				foodItemsObject.push(tempobject);
+			}
+		}
+	}
+	else{
+		for  (var item in foodItems){
+			if(foodItems[item] != ""){
+				var tempobject = {Name : foodItems[item] , HealthRate : numbersList[item]}
+				console.log(tempobject);
+				foodItemsObject.push(tempobject);
+			}
+		}
+	}
+	return foodItemsObject;
 
-// }
+}
 
 
 exports.getEmail = function(req, res){
@@ -36,6 +75,7 @@ exports.getEmail = function(req, res){
 		From : senderEmail,
 		Subject : req.body.headers.Subject,
 		Body : req.body.plain,
+		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
 
@@ -53,7 +93,8 @@ exports.getFake = function(req, res){
 	var email = {
 		From : senderEmail,
 		Subject : "ambulance",
-		Body : "they are always very very laud",
+		Body : "chipotle 2 apple salad 1",
+		FoodItems : parseEmailForFoodItems("chipotle 2 apple salad 1"),
 		Date: new Date(),
 	}
 
