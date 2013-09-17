@@ -122,7 +122,9 @@ require(
 
   ],
   function($, _, Backbone, jqueryui, less, Marionette, MyApp) {
+    
     $(document).foundation();
+
     $('.sendEmail').on('click',function(){
         console.log("why is this not working");
         $.ajax({
