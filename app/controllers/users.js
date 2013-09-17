@@ -28,7 +28,12 @@ function parseEmailForFoodItems(body){
 	var foodItemsObject = [];
 	var numbersList = body.match(/[0-9]/g);
 	var flag = true;
+	if(body.indexOf("\n") == (body.length - 1)  ){
+		body = body.slice(0,-2); 
+	}
+	console.log(body);
 	if(body.indexOf("\n") != -1){
+		console.log("contains an enter");
 		foodItems = body.split("\n");
 	}
 	else if(body.indexOf(",") != -1){
@@ -39,8 +44,8 @@ function parseEmailForFoodItems(body){
 		foodItems = body.split(/[0-9]/);
 
 	}
-	console.log(foodItems)
 	if(flag){
+		console.log("flag is true");
 		for  (var item in foodItems){
 			var tempnumber = foodItems[item].match(/[0-9]/g);
 			if(tempnumber){
@@ -55,8 +60,9 @@ function parseEmailForFoodItems(body){
 		}
 	}
 	else{
+		console.log("no flag");
 		for  (var item in foodItems){
-			if(foodItems[item] != ""){
+			if(foodItems[item] != "" || "/n"){
 				var tempobject = {Name : foodItems[item] , HealthRate : numbersList[item]}
 				console.log(tempobject);
 				foodItemsObject.push(tempobject);
@@ -66,6 +72,7 @@ function parseEmailForFoodItems(body){
 	return foodItemsObject;
 
 }
+
 
 
 exports.getEmail = function(req, res){
