@@ -11,7 +11,7 @@ define([
     var EmailsView = Backbone.Marionette.CollectionView.extend({
         
         itemView : EmailView,
-        emptyView : NoEmailView
+        emptyView : NoEmailView,
     });
     return EmailsView;
 	

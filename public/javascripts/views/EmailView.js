@@ -6,12 +6,16 @@ define([
 ], function ($, _, Backbone, Marionette) {
 	'use strict';
 
-	var UserView = Backbone.Marionette.ItemView.extend({
-            
+	var EmailView = Backbone.Marionette.ItemView.extend({
+		initialize : function(){
+			_.bindAll(this);
+    		this.model.on('change', this.render);
+		},
+
         template: '#EmailView'
 
     });
-    return UserView;
+    return EmailView;
 	
 });
 

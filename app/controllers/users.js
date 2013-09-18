@@ -37,7 +37,7 @@ function noNumberParse(foodItems) {
 	return foodItemsObject;
 }
 
-function numberParse(foodItems){
+function numberParse(foodItems,numbersList){
 	var foodItemsObject = [];
 	for  (var item in foodItems){
 		if(foodItems[item] != "" || "/n"){
@@ -64,6 +64,11 @@ function parseEmailForFoodItems(body){
 		foodItems = body.split("\n");
 		return noNumberParse(foodItems);
 	}
+	else if(body.indexOf(" and") != -1 || body.indexOf(" and ") != -1){
+		console.log("contains and");
+		foodItems = body.split("and");
+		return noNumberParse(foodItems);
+	}
 	else if(body.indexOf(",") != -1){
 		console.log("contains a coma");
 		foodItems = body.split(",");
@@ -73,7 +78,7 @@ function parseEmailForFoodItems(body){
 		console.log("contains a number");
 		flag = false;
 		foodItems = body.split(/[0-9]/);
-		return numberParse(foodItems);
+		return numberParse(foodItems,numbersList);
 
 	}
 }
@@ -104,7 +109,7 @@ exports.getFake = function(req, res){
 		From : senderEmail,
 		Subject : "ambulance",
 		Body : "chipotle apple salad 1/n",
-		FoodItems : parseEmailForFoodItems("oranges 2 \n salad 1 \n apple smootie 3 \n"),
+		FoodItems : parseEmailForFoodItems("taim 2 coca cola 1"),
 		Date: new Date(),
 	}
 

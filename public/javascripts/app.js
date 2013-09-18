@@ -12,8 +12,8 @@ define([
     });
 
     MyApp.addInitializer(function(){
-	      MyApp.emails = new Emails(); 
-          console.log(MyApp.emails); 
+	      MyApp.emails = new Emails();
+
 	      MyApp.list.show(new EmailsView({collection: MyApp.emails}));
     });
 
