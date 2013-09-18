@@ -8,6 +8,9 @@ module.exports = function (passport, config, env) {
 	  if(env == "development"){
 	  	var URL =  "http://localhost:3000/oauth2callback"
 	  }
+	  else if(env == "staging"){
+	  	var URL = 'http://staginggorkemnutrition.herokuapp.com/oauth2callback'	
+	  }
 	  else{
 	  	var URL = 'http://gorkemnutrition.herokuapp.com/oauth2callback'	    // realm: 'http://localhost:3000'
 
