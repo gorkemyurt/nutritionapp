@@ -109,7 +109,7 @@ exports.getFake = function(req, res){
 		From : senderEmail,
 		Subject : "ambulance",
 		Body : "chipotle apple salad 1/n",
-		FoodItems : parseEmailForFoodItems("taim 2 coca cola 1"),
+		FoodItems : parseEmailForFoodItems("taim and coca cola 1"),
 		Date: new Date(),
 	}
 
