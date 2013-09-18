@@ -1,0 +1,21 @@
+<div class="panel">
+      <p> Date/Time: <%= Date %> </p>
+      <div class="meal-info">
+            <p> <b> Meal Name: </b> <%= Subject %> </p>
+            <p> <b> Food Item(s): </b> </p>
+                  <% _.each(FoodItems, function(item) { %>
+                        <% if(item.HealthRate == 1) { %>
+                              <p class="Success Label"><%= item.Name %></p>
+                        <% } %>
+                        <% if(item.HealthRate == 2) { %>
+                              <p class="Regular Label"><%= item.Name %></p>
+                        <% } %>
+                        <% if(item.HealthRate == 3) { %>
+                              <p class="Alert Label"><%= item.Name %></p>
+                        <% } %>
+                        <% if(item.HealthRate == null && item.Name != null) { %>
+                              <p class="Secondary Label"><%= item.Name %></p>
+                        <% } %>
+                  <% }); %>
+      </div>
+</div>

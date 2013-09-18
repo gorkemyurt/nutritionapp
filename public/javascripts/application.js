@@ -30,7 +30,8 @@ require.config({
     "foundation.reveal": "foundation/foundation.reveal",
     "foundation.section": "foundation/foundation.section",
     "foundation.tooltips": "foundation/foundation.tooltips",
-    "foundation.topbar": "foundation/foundation.topbar",
+    "foundation.topbar": "foundation/foundation.topbar"
+    // "emailTemplate" : "templates/emailTemplate.html"
 
   },
   shim: {

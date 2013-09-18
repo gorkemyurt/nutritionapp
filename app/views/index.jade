@@ -14,7 +14,7 @@ html(lang='en')
       body
 
         header
-            | Staging APP (NOT REAL) 
+            | TEST TEST TEST 
         section
             div.row
                 div.small-12.large-3.medium-12.columns
@@ -26,30 +26,6 @@ html(lang='en')
                     div.Regular.Label.cover Medium Health
                     div.Alert.Label.cover Unhealty
                     div.Secondary.Label.cover No Rating
-
-
-        script(id="EmailView", type="text/template")
-            <div class="panel">
-            <p> Date/Time: <%= Date %> </p>
-            <div class="meal-info">
-            <p> <b> Meal Name: </b> <%= Subject %> </p>
-            <p> <b> Food Item(s): </b> </p>
-            <% _.each(FoodItems, function(item) { %>
-            <% if(item.HealthRate == 1) { %>
-            <p class="Success Label"><%= item.Name %></p>
-            <% } %>
-            <% if(item.HealthRate == 2) { %>
-            <p class="Regular Label"><%= item.Name %></p>
-            <% } %>
-            <% if(item.HealthRate == 3) { %>
-            <p class="Alert Label"><%= item.Name %></p>
-            <% } %>
-            <% if(item.HealthRate == null && item.Name != null) { %>
-            <p class="Secondary Label"><%= item.Name %></p>
-            <% } %>
-            <% }); %>
-            </div>
-            </div>
 
         script(id="EmailsView", type="text/template")
             <h2> Emails </h2>
