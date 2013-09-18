@@ -19,7 +19,6 @@ define([
 	   		this.fetch().complete(function(){
 		   		_.each(that.models, function(item){
 	                item.set("Date", months[new Date(item.get("Date")).getMonth()] + " " + new Date(item.get("Date")).getUTCDate());
-	                item.set("Name", "Scandal");
           		});
 	   		});
 

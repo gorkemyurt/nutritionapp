@@ -1,7 +1,7 @@
 <div class="panel">
-      <p> Date/Time: <%= Date %> </p>
+      <p class="right"><%= Date %> </p>
       <div class="meal-info">
-            <p> <b> Meal Name: </b> <%= Subject %> </p>
+            <p class="mealname"> <b> Meal Name: </b> <%= Subject %> </p>
             <p> <b> Food Item(s): </b> </p>
                   <% _.each(FoodItems, function(item) { %>
                         <% if(item.HealthRate == 1) { %>

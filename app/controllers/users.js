@@ -74,12 +74,19 @@ function parseEmailForFoodItems(body){
 		foodItems = body.split(",");
 		return noNumberParse(foodItems);
 	}
-	else if (numbersList.length != 0){
+	else if (numbersList != null){
 		console.log("contains a number");
 		flag = false;
 		foodItems = body.split(/[0-9]/);
 		return numberParse(foodItems,numbersList);
 
+	}
+	else{
+		var foodItemsObject = [];
+		console.log("doesnt contain anything");
+		var tempobject = {Name : "Invalid Input"}
+		foodItemsObject.push(tempobject);
+		return foodItemsObject;
 	}
 }
 
@@ -109,7 +116,7 @@ exports.getFake = function(req, res){
 		From : senderEmail,
 		Subject : "ambulance",
 		Body : "chipotle apple salad 1/n",
-		FoodItems : parseEmailForFoodItems("taim and coca cola 1"),
+		FoodItems : parseEmailForFoodItems("apple"),
 		Date: new Date(),
 	}
 
