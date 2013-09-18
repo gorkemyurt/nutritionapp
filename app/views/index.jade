@@ -1,61 +1,61 @@
-doctype 5
 html(lang='en')
-head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-    title  Gorkem 
-    link(rel='stylesheet/less', type='text/css', href='/stylesheets/style.less')
-    link(rel='stylesheet', type='text/css', href='/stylesheets/normalize.css')    
-    link(rel='stylesheet', type='text/css', href='/stylesheets/foundation.css')
-    script(type="text/javascript", src="javascripts/foundation/vendor/custom.modernizr.js")
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+        meta(name="viewport",content="width=device-width")
+        title  Gorkem 
+        link(rel='stylesheet/less', type='text/css', href='/stylesheets/style.less')
+        link(rel='stylesheet', type='text/css', href='/stylesheets/normalize.css')    
+        link(rel='stylesheet', type='text/css', href='/stylesheets/foundation.css')
+        script(type="text/javascript", src="javascripts/foundation/vendor/custom.modernizr.js")
 
 
-  body
+      body
 
-    header
-        | Hello Everyone 
-    section
-        div.row
-            div.small-12.large-3.columns
-                <a href="#" class="button sendEmail">Send Email</a>
-            div.small-9.large-6.columns 
-                #list
-            div.small-3.large-3.columns 
-                div.Success.Label.cover Healtiest
-                div.Regular.Label.cover Medium Health
-                div.Alert.Label.cover Unhealty
-                div.Secondary.Label.cover No Rating
-
-
-    script(id="EmailView", type="text/template")
-        <div class="panel">
-        <p> Date/Time: <%= Date %> </p>
-        <div class="meal-info">
-        <p> <b> Meal Name: </b> <%= Subject %> </p>
-        <p> <b> Food Item(s): </b> </p>
-        <% _.each(FoodItems, function(item) { %>
-        <% if(item.HealthRate == 1) { %>
-        <p class="Success Label"><%= item.Name %></p>
-        <% } %>
-        <% if(item.HealthRate == 2) { %>
-        <p class="Regular Label"><%= item.Name %></p>
-        <% } %>
-        <% if(item.HealthRate == 3) { %>
-        <p class="Alert Label"><%= item.Name %></p>
-        <% } %>
-        <% if(item.HealthRate == null && item.Name != null) { %>
-        <p class="Secondary Label"><%= item.Name %></p>
-        <% } %>
-        <% }); %>
-        </div>
-        </div>
-
-    script(id="EmailsView", type="text/template")
-        <h2> Emails </h2>
-
-    script(id="noUsersView", type="text/template")
-        <h2> No Emails.. </h2>
+        header
+            | Hello Everyone 
+        section
+            div.row
+                div.small-12.large-3.columns
+                    <a href="#" class="button sendEmail">Send Email</a>
+                div.small-9.large-6.columns 
+                    #list
+                div.small-3.large-3.columns 
+                    div.Success.Label.cover Healtiest
+                    div.Regular.Label.cover Medium Health
+                    div.Alert.Label.cover Unhealty
+                    div.Secondary.Label.cover No Rating
 
 
-    script(src='/javascripts/lib/require.js', data-main='/javascripts/application.js')
+        script(id="EmailView", type="text/template")
+            <div class="panel">
+            <p> Date/Time: <%= Date %> </p>
+            <div class="meal-info">
+            <p> <b> Meal Name: </b> <%= Subject %> </p>
+            <p> <b> Food Item(s): </b> </p>
+            <% _.each(FoodItems, function(item) { %>
+            <% if(item.HealthRate == 1) { %>
+            <p class="Success Label"><%= item.Name %></p>
+            <% } %>
+            <% if(item.HealthRate == 2) { %>
+            <p class="Regular Label"><%= item.Name %></p>
+            <% } %>
+            <% if(item.HealthRate == 3) { %>
+            <p class="Alert Label"><%= item.Name %></p>
+            <% } %>
+            <% if(item.HealthRate == null && item.Name != null) { %>
+            <p class="Secondary Label"><%= item.Name %></p>
+            <% } %>
+            <% }); %>
+            </div>
+            </div>
+
+        script(id="EmailsView", type="text/template")
+            <h2> Emails </h2>
+
+        script(id="noUsersView", type="text/template")
+            <h2> No Emails.. </h2>
+
+
+        script(src='/javascripts/lib/require.js', data-main='/javascripts/application.js')
 
