@@ -15,10 +15,7 @@ exports.login = function(req,res){
 }
 
 exports.emails = function(req,res){
-	// console.log(req.user);
 	User.findOne({googleID : req.user.id},function(err, user){
-		// console.log(user);
-		// console.log(user.SentEmails);
 		res.send(user.SentEmails);
 	})
 }
@@ -107,7 +104,7 @@ exports.getFake = function(req, res){
 		From : senderEmail,
 		Subject : "ambulance",
 		Body : "chipotle apple salad 1/n",
-		FoodItems : parseEmailForFoodItems("oranges 2 \n salad 1"),
+		FoodItems : parseEmailForFoodItems("oranges 2 \n salad 1 \n apple smootie 3 \n"),
 		Date: new Date(),
 	}
 
