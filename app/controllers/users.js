@@ -110,7 +110,8 @@ exports.getEmail = function(req, res){
 exports.getFake = function(req, res){
 	console.log("hey");
 	console.log(req.body)
-	var senderEmail = req.user.email;
+	var senderEmail = req.user.emails[0].value;
+	console.log(senderEmail);
 	var email = req.body;
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.writeHead(200, {'content-type': 'text/plain'})
