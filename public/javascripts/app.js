@@ -27,11 +27,13 @@ define([
                     item.set("Date", months[new Date(item.get("Date")).getMonth()] + " " + new Date(item.get("Date")).getUTCDate());
                 });
                 if(MyApp.emails.length > 0 ){
+
                     MyApp.label.show(new LabelView());
                     MyApp.list.show(new EmailsView({collection: MyApp.emails }));
 
                 }
                 else{
+                  console.log("THATS WHY IT DOESNT WORK");
                   MyApp.welcome.show(new NoEmailView());
                 }
          });
