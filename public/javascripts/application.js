@@ -15,6 +15,7 @@ require.config({
     "EmailsView" : 'views/EmailsView',
     "EmailView" : 'views/EmailView',
     "NoEmailView" : 'views/NoEmailView',
+    "FormView" : 'views/FormView',
     "MyApp" : 'app',
     "foundation": "foundation/foundation",
     "foundation.alerts": "foundation/foundation.alerts",
@@ -30,7 +31,8 @@ require.config({
     "foundation.reveal": "foundation/foundation.reveal",
     "foundation.section": "foundation/foundation.section",
     "foundation.tooltips": "foundation/foundation.tooltips",
-    "foundation.topbar": "foundation/foundation.topbar"
+    "foundation.topbar": "foundation/foundation.topbar",
+    "parseEmail" :  "parsing/parseEmail"
     // "emailTemplate" : "templates/emailTemplate.html"
 
   },
@@ -126,13 +128,14 @@ require(
     
     $(document).foundation();
 
-    $('.sendEmail').on('click',function(){
-        console.log("why is this not working");
-        $.ajax({
-          type: "POST",
-          url: '/incomingFake',
-        });
-    });
+    // $('.sendEmail').on('click',function(){
+    //     console.log("why is this not working");
+    //     $.ajax({
+    //       type: "POST",
+    //       url: '/incomingFake',
+    //       data: {data : $("#fake-email").val()}
+    //     });
+    // });
 
 
   });

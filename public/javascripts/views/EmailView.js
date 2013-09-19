@@ -8,6 +8,18 @@ define([
 	'use strict';
 
 	var EmailView = Backbone.Marionette.ItemView.extend({
+		events:{
+    		"click button" : " sendFakeEmail"
+		},
+
+		sendFakeEmail : function(e){
+	        $.ajax({
+	          type: "POST",
+	          url: '/incomingFake',
+	          data: {data : $("#fake-email").val()}
+	        });
+		},
+
 		initialize : function(){
 			_.bindAll(this);
     		this.model.on('change', this.render);

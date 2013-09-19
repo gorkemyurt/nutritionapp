@@ -9,9 +9,12 @@ define([
 	'use strict';
 
     var EmailsView = Backbone.Marionette.CollectionView.extend({
-        
+
         itemView : EmailView,
         emptyView : NoEmailView,
+		appendHtml: function(collectionView, itemView){
+		    collectionView.$el.prepend(itemView.el);
+		}
     });
     return EmailsView;
 	

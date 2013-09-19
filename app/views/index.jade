@@ -14,26 +14,22 @@ html(lang='en')
       body
 
         header
-            | <h4 class="white">THIS IS A TEST, ALPHA 0.001</h4>
+            | <h4 class="white">THIS IS A TEST, ALPHA v0.001</h4>
         section
             div.row
-                div.small-12.large-3.medium-12.columns
-                    <a href="#" class="button expand sendEmail">Send Email</a>
-                div.small-12.large-6.medium-12.columns 
-                    #list
+                //- div.small-12.large-3.medium-12.columns
+                //-     #form
                 div.small-12.large-3.medium-12.columns 
-                    div.Success.Label.cover Healtiest
+                    div.Success.Label.cover healthiest
                     div.Regular.Label.cover Medium Health
-                    div.Alert.Label.cover Unhealty
+                    div.Alert.Label.cover Unhealthy
                     div.Secondary.Label.cover No Rating
+                div.small-12.large-9.medium-12.columns 
+                    #list
 
-        script(id="EmailsView", type="text/template")
-            <h2> Emails </h2>
-
-        script(id="noUsersView", type="text/template")
-            //- <h4 class="center infomes"> Start Your Food Log by Sending an Email to 724b977c9cdd140584b0@cloudmailin.net </h4>
-            <h4 class="center infomes"> Loading..  </h4>
-
+        script(id="formView", type="text/template")
+            <input id="fake-email" type="text">
+            <a href="#" class="button expand sendEmail">Send Email</a>
 
         script(src='/javascripts/lib/require.js', data-main='/javascripts/application.js')
 

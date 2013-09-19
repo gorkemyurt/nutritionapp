@@ -1,24 +1,3 @@
-var mongoose = require('mongoose')
-  , User = mongoose.model('User')
- , http = require('https')
- ,querystring = require('querystring')
-
-exports.login = function(req,res){
-	if(req.user){
-		res.send(req.profile);
-		res.render('index');
-	}
-	else{
-		res.render('login')
-	}
-}
-
-exports.emails = function(req,res){
-	User.findOne({googleID : req.user.id},function(err, user){
-		res.send(user.SentEmails);
-	})
-}
-
 function noNumberParse(foodItems) {
 	var foodItemsObject = [];
 	for  (var item in foodItems){
@@ -88,35 +67,3 @@ function parseEmailForFoodItems(body){
 		return foodItemsObject;
 	}
 }
-
-exports.getEmail = function(req, res){
-	console.log(req.body.plain);
-	var senderEmail  = req.body.headers.From.split(">")[0].split("<")[1];
-	var email = {
-		From : senderEmail,
-		Subject : req.body.headers.Subject,
-		Body : req.body.plain,
-		FoodItems : parseEmailForFoodItems(req.body.plain),
-		Date: new Date(),
-	}
-	User.findAndStoreEmail(senderEmail, email ,function(){
-		res.send(200);
-	});
-
-}
-
-
-
-exports.getFake = function(req, res){
-	console.log(req.body)
-	var senderEmail = "yurtseven.gorkem@gmail.com";
-	var email = req.body;
-	User.findAndStoreEmail(senderEmail, email ,function(){
-		res.writeHead(200, {'content-type': 'text/plain'})
-    	res.end('Message Received. Thanks!\r\n')
-	})
-
-
-}
-
-

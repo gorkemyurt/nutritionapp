@@ -3,30 +3,32 @@ define([
 	'underscore',
 	'backbone',
 	'marionette',
-  'User'
-], function ($, _, Backbone, Marionette, User) {
+  'parseEmail',
+  'Email'
+
+  ], function ($, _, Backbone, Marionette, parseEmail, Email) {
 	'use strict';
 
     var FormView = Backbone.Marionette.ItemView.extend({
 
         template : '#formView',
         events:{
-          'click button' : 'createNewUser'
-        },
-        ui : {
-            name: "#name",
-            age: "#age"
+          'click .sendEmail' : 'sendFakeEmail'
         },
 
-        createNewUser: function(){
-          var myUser = new User({
-            name : this.ui.name.val(),
-            age : this.ui.age.val()
-          })
-          this.collection.add(myUser);
-          myUser.save();
-          this.ui.age.val("");
-          this.ui.name.val("");
+
+        sendFakeEmail: function(){
+          var emailObject =  parseEmailForFoodItems($("#fake-email").val());
+          var myEmail = new Email({
+              Subject : "Not Specified",
+              Date : new Date(),
+              FoodItems: emailObject
+          });
+          console.log(this.collection.models);
+          this.collection.add(myEmail);
+          console.log(this.collection.models);
+          myEmail.save();
+
         }
 
     });
