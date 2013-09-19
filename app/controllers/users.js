@@ -108,6 +108,7 @@ exports.getEmail = function(req, res){
 
 
 exports.getFake = function(req, res){
+	console.log("hey");
 	console.log(req.body)
 	var senderEmail = "yurtseven.gorkem@gmail.com";
 	var email = req.body;
