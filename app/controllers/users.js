@@ -57,7 +57,10 @@ function parseEmailForFoodItems(body){
 	var foodItemsObject = [];
 	var numbersList = body.match(/[0-9]/g);
 	
-	if(body.indexOf("\n") == (body.length - 1)  ){
+	// if(body.indexOf("\n") == (body.length - 1)  ){
+	// 	body = body.slice(0,-1); 
+	// }
+	while(body.indexOf("\n") != (body.length - 1)  ){
 		body = body.slice(0,-1); 
 	}
 	if(body.indexOf("\n") != -1){
