@@ -60,9 +60,15 @@ function parseEmailForFoodItems(body){
 	// if(body.indexOf("\n") == (body.length - 1)  ){
 	// 	body = body.slice(0,-1); 
 	// }
-	while(body.indexOf("\n") != (body.length - 1)  ){
+	// while(body.indexOf("\n") != (body.length - 1)  ){
+	// 	console.log("PROBLEM");
+	// 	body = body.slice(0,-1); 
+	// }
+	while(body[body.length -1 ] == "\n"){
+		console.log("PROBLEM");
 		body = body.slice(0,-1); 
 	}
+
 	if(body.indexOf("\n") != -1){
 		console.log("contains an enter");
 		foodItems = body.split("\n");
