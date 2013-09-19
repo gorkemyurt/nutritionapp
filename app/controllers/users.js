@@ -63,6 +63,7 @@ function parseEmailForFoodItems(body){
 	if(body.indexOf("\n") != -1){
 		console.log("contains an enter");
 		foodItems = body.split("\n");
+		console.log(foodItems);
 		return noNumberParse(foodItems);
 	}
 
