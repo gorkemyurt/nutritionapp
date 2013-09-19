@@ -1,27 +1,38 @@
 
-<div class="panel">
-      <p class="right"><%= Date %> </p>
-      <div class="meal-info">
-            <% if( Subject ) {%>
-                  <p class="mealname"> <b> Meal Name: </b> <%= Subject %> </p>
-            <% } else { %>
-                  <p class="mealname"> <b> Meal Name: </b> No Meal Name </p>
-            <% } %>
 
-            <p> <b> Food Item(s): </b> </p>
-                  <% _.each(FoodItems, function(item) { %>
-                        <% if(item.HealthRate == 1) { %>
-                              <p class="Success Label"><%= item.Name %></p>
-                        <% } %>
-                        <% if(item.HealthRate == 2) { %>
-                              <p class="Regular Label"><%= item.Name %></p>
-                        <% } %>
-                        <% if(item.HealthRate == 3) { %>
-                              <p class="Alert Label"><%= item.Name %></p>
-                        <% } %>
-                        <% if(item.HealthRate == null && item.Name != null) { %>
-                              <p class="Secondary Label"><%= item.Name %></p>
-                        <% } %>
-                  <% }); %>
+<div class="small-12 large-3 medium-3 columns labels">
+
+      <div class= "Success Label cover"> healthiest </div>
+      <div class= "Regular Label cover"> medium Health </div>
+      <div class= "Alert Label cover"> Unhealthy </div>
+      <div class= "Secondary Label cover"> no Rating </div>
+</div>
+
+<div class="small-12 large-9 medium-9 columns"> 
+      <div class="panel">
+            <p class="right"><%= Date %> </p>
+            <div class="meal-info">
+                  <% if( Subject ) {%>
+                        <p class="mealname"> <b> Meal Name: </b> <%= Subject %> </p>
+                  <% } else { %>
+                        <p class="mealname"> <b> Meal Name: </b> No Meal Name </p>
+                  <% } %>
+
+                  <p> <b> Food Item(s): </b> </p>
+                        <% _.each(FoodItems, function(item) { %>
+                              <% if(item.HealthRate == 1) { %>
+                                    <p class="Success Label"><%= item.Name %></p>
+                              <% } %>
+                              <% if(item.HealthRate == 2) { %>
+                                    <p class="Regular Label"><%= item.Name %></p>
+                              <% } %>
+                              <% if(item.HealthRate == 3) { %>
+                                    <p class="Alert Label"><%= item.Name %></p>
+                              <% } %>
+                              <% if(item.HealthRate == null && item.Name != null) { %>
+                                    <p class="Secondary Label"><%= item.Name %></p>
+                              <% } %>
+                        <% }); %>
+            </div>
       </div>
 </div>
