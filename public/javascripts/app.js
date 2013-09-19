@@ -24,7 +24,7 @@ define([
           var that = this;
           MyApp.emails.fetch().complete(function(){       
                 _.each(MyApp.emails.models, function(item){
-                    item.set("Date", months[new Date(item.get("Date")).getMonth()] + " " + new Date(item.get("Date")).getUTCDate());
+                    item.set("Date", months[new Date(item.get("Date")).getMonth()] + " " + new Date(item.get("Date")).getUTCDate() + " " + new Date(item.get("Date")).getHours() + ":" + new Date(item.get("Date")).getMinutes());
                 });
                 if(MyApp.emails.length > 0 ){
 
