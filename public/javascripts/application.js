@@ -121,11 +121,10 @@ require(
     "foundation.reveal",
     "foundation.section",
     "foundation.tooltips",
-    "foundation.topbar",
-
+    "foundation.topbar"
 
   ],
-  function($, _, Backbone, jqueryui, less, Marionette, MyApp) {
+  function($, _, Backbone, jqueryui, less, Marionette, MyApp, io) {
     
     $(document).foundation();
 

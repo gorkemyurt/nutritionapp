@@ -62,7 +62,7 @@ function parseEmailForFoodItems(body){
 	else{
 		var foodItemsObject = [];
 		console.log("doesnt contain anything");
-		var tempobject = {Name : "Invalid Input"}
+		var tempobject = {Name : body}
 		foodItemsObject.push(tempobject);
 		return foodItemsObject;
 	}
