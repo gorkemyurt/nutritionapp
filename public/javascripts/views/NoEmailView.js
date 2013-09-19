@@ -5,16 +5,16 @@ define([
 	'marionette',
 	'Email',
 	'parseEmail',
-	'text!templates/NoEmailTemplate.html',
+	// 'text!templates/NoEmailTemplate.html',
 	'Emails'
 
-], function ($, _, Backbone, Marionette,Email,parseEmail, NoEmailTemplate , Emails ) {
+], function ($, _, Backbone, Marionette,Email,parseEmail , Emails ) {
 	'use strict';
 
 
 	var NoEmailView = Backbone.Marionette.ItemView.extend({
 
-		template: _.template(NoEmailTemplate),
+		// template: _.template(NoEmailTemplate),
 
 
 		events:{
