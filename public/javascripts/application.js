@@ -32,7 +32,8 @@ require.config({
     "foundation.section": "foundation/foundation.section",
     "foundation.tooltips": "foundation/foundation.tooltips",
     "foundation.topbar": "foundation/foundation.topbar",
-    "parseEmail" :  "parsing/parseEmail"
+    "parseEmail" :  "parsing/parseEmail",
+    "LabelView" : "views/LabelView"
     // "emailTemplate" : "templates/emailTemplate.html"
 
   },

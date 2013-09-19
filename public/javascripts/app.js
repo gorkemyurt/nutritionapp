@@ -1,16 +1,20 @@
 define([
 	"marionette",
 	"EmailsView",
-    "FormView",
-	"Emails"
-	], function (Marionette, EmailsView, FormView, Emails) {
+  "FormView",
+	"Emails",
+  "LabelView",
+  "NoEmailView"
+	], function (Marionette, EmailsView, FormView, Emails , LabelView, NoEmailView) {
 
     // set up the app instance
     var MyApp = new Marionette.Application();
 
     MyApp.addRegions({
 	      list: "#list",
-          form: "#form"
+        form: "#form",
+        label: "#label",
+        welcome: "#welcome"
     });
 
     MyApp.addInitializer(function(){
@@ -22,7 +26,14 @@ define([
                 _.each(MyApp.emails.models, function(item){
                     item.set("Date", months[new Date(item.get("Date")).getMonth()] + " " + new Date(item.get("Date")).getUTCDate());
                 });
-                MyApp.list.show(new EmailsView({collection: MyApp.emails }));
+                if(MyApp.emails.length > 0 ){
+                    MyApp.label.show(new LabelView());
+                    MyApp.list.show(new EmailsView({collection: MyApp.emails }));
+
+                }
+                else{
+                  MyApp.welcome.show(new NoEmailView());
+                }
          });
     });
 

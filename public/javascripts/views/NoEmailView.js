@@ -16,6 +16,7 @@ define([
 
 		// template: _.template(NoEmailTemplate),
 
+		template: "#NoEmailTemplate",
 
 		events:{
 	          'click .sendEmail' : 'sendFakeEmail'
