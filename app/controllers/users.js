@@ -23,6 +23,7 @@ exports.emails = function(req,res){
 function noNumberParse(foodItems) {
 	var foodItemsObject = [];
 	for  (var item in foodItems){
+		console.log(foodItems[item]);
 		var tempnumber = foodItems[item].match(/[0-9]/g);
 		if(tempnumber){
 			var temp = foodItems[item].split(/[0-9]/)
@@ -40,6 +41,7 @@ function noNumberParse(foodItems) {
 function numberParse(foodItems,numbersList){
 	var foodItemsObject = [];
 	for  (var item in foodItems){
+		console.log(foodItems[item]);
 		if(foodItems[item] != "" || "/n"){
 			var tempobject = {Name : foodItems[item] , HealthRate : numbersList[item]}
 			console.log(tempobject);
@@ -57,21 +59,19 @@ function parseEmailForFoodItems(body){
 	var numbersList = body.match(/[0-9]/g);
 	
 	if(body.indexOf("\n") == (body.length - 1)  ){
-		body = body.slice(0,-2); 
+		body = body.slice(0,-1); 
 	}
 	if(body.indexOf("\n") != -1){
 		console.log("contains an enter");
 		foodItems = body.split("\n");
 		return noNumberParse(foodItems);
 	}
-	else if(body.indexOf(" and") != -1 || body.indexOf(" and ") != -1){
-		console.log("contains and");
-		foodItems = body.split("and");
-		return noNumberParse(foodItems);
-	}
+
 	else if(body.indexOf(",") != -1){
 		console.log("contains a coma");
+		console.log(body);
 		foodItems = body.split(",");
+		console.log(foodItems);
 		return noNumberParse(foodItems);
 	}
 	else if (numbersList != null){
@@ -105,7 +105,6 @@ exports.getEmail = function(req, res){
 		res.send(200);
 	});
 
-
 }
 
 
@@ -116,7 +115,7 @@ exports.getFake = function(req, res){
 		From : senderEmail,
 		Subject : "ambulance",
 		Body : "chipotle apple salad 1/n",
-		FoodItems : parseEmailForFoodItems("apple"),
+		FoodItems : parseEmailForFoodItems("corona beers 3, french fries 3\n"),
 		Date: new Date(),
 	}
 
