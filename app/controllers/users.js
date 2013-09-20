@@ -111,7 +111,8 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
-	global.io.of("/" + req.user.id).sockets.emit('email' , email);
+	console.log(req.user.id);
+	// global.io.of("/" + req.user.id).sockets.emit('email' , email);
 
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
@@ -128,6 +129,7 @@ exports.getFake = function(req, res){
 	var senderEmail = req.user.emails[0].value;
 	console.log(senderEmail);
 	var email = req.body;
+	console.log(req.user.id);
 
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
