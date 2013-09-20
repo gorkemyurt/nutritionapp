@@ -34,9 +34,20 @@ global.io.configure(function () {
   global.io.set("polling duration", 10); 
 });
 
-global.io.sockets.on('connection', function(socket) {
-    socket.emit('console', "gorkem");
-});
+
+// var io = require('socket.io').listen(server);
+//   io.configure(function () { 
+//   io.set("transports", ["xhr-polling"]); 
+//   io.set("polling duration", 10); 
+// });
+
+
+// io.sockets.on('connection', function(socket) {
+//     console.log("EMIIIIITTT");
+//     // socket.emit('email', "email");
+// });
+
+
 
 // socket(io);
 

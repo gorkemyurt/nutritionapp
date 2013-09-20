@@ -110,9 +110,8 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
-	global.io.sockets.on('connection', function(socket) {
-		socket.emit('email', email);
-	});
+	global.io.sockets.emit('email' , email);
+
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.send(200);
@@ -128,9 +127,8 @@ exports.getFake = function(req, res){
 	var senderEmail = req.user.emails[0].value;
 	console.log(senderEmail);
 	var email = req.body;
-	global.io.sockets.on('connection', function(socket) {
-		socket.emit('email', email);
-	});
+	global.io.sockets.emit('email' , email);
+
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.writeHead(200, {'content-type': 'text/plain'})

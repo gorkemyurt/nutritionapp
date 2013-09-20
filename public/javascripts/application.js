@@ -132,6 +132,10 @@ require(
   function($, _, Backbone, less, Marionette, MyApp, io) {
     
     $(document).foundation();
+    // $( document ).ready(function() {
+    //     window.socket = io.connect('http://localhost:3000');
+    // });
+    
         // var socket = io.connect('http://localhost:3000');
         //   socket.on('news', function (data) {
         //   console.log(data);
