@@ -16,8 +16,8 @@ define([
 	   	initialize : function() {
 		    var socket = io.connect('http://staginggorkemnutrition.herokuapp.com');
 	          socket.on('email', function (data) {
-	          var newEmail = new emailModel(data);
-	          this.add(newEmail);
+	          	console.log("i got the socket connection");
+	          	console.log(data);
 	          // socket.emit('my other event', { my: 'data' });
 	        });
 	   	}

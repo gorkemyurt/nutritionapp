@@ -34,7 +34,9 @@ global.io.configure(function () {
   global.io.set("polling duration", 10); 
 });
 
-
+global.io.sockets.on('connection', function(socket) {
+    socket.emit('console', "gorkem");
+});
 
 // socket(io);
 

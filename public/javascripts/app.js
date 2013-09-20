@@ -33,6 +33,8 @@ define([
 
                     MyApp.label.show(new LabelView());
                     MyApp.list.show(new EmailsView({collection: MyApp.emails }));
+                    MyApp.form.show(new FormView({collection: MyApp.emails }));
+
                     MyApp.welcome.close();
 
                 }

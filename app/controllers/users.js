@@ -128,6 +128,10 @@ exports.getFake = function(req, res){
 	var senderEmail = req.user.emails[0].value;
 	console.log(senderEmail);
 	var email = req.body;
+	global.io.sockets.on('connection', function(socket) {
+		socket.emit('email', email);
+	});
+
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.writeHead(200, {'content-type': 'text/plain'})
     	res.end('Message Received. Thanks!\r\n')

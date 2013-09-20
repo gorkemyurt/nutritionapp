@@ -21,8 +21,8 @@ define([
 		},
 
 		initialize : function(){
-			_.bindAll(this);
-    		this.model.on('change', this.render);
+			// _.bindAll(this);
+   //  		this.model.on('change', this.render);
 		},
 
         template: _.template(emailTemplate)

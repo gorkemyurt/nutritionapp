@@ -24,9 +24,9 @@ define([
               Date : new Date(),
               FoodItems: emailObject
           });
-          console.log(this.collection.models);
+          // console.log(this.collection.models);
           this.collection.add(myEmail);
-          console.log(this.collection.models);
+          // console.log(this.collection.models);
           myEmail.save();
 
         }
