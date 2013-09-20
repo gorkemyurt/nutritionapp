@@ -112,8 +112,7 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
-	global.io.of("/" + global.id).emit('email' , email);
-
+	global.io.of(global.id).emit('email' , email);
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.send(200);
@@ -129,8 +128,7 @@ exports.getFake = function(req, res){
 	var senderEmail = req.user.emails[0].value;
 	console.log(senderEmail);
 	var email = req.body;
-	console.log(req.user.id);
-
+	global.io.of(global.id).emit('email' , email);
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.writeHead(200, {'content-type': 'text/plain'})
