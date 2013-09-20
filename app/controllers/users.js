@@ -114,7 +114,9 @@ exports.getEmail = function(req, res){
 		Date: new Date(),
 	}
 	User.findOne({email : senderEmail}, function(err, user){
-		global.users[user.googleID].emit('email' , email); 
+		if(global.users[user.googleID]){
+			global.users[user.googleID].emit('email' , email); 
+		}
 	});
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
