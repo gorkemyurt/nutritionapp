@@ -14,10 +14,11 @@ define([
 	    model : emailModel,
 
 	   	initialize : function() {
+	   		var that = this;
 		    var socket = io.connect('http://staginggorkemnutrition.herokuapp.com');
 	         socket.on('email', function (data) {
 	         	var newEmail = new emailModel(data);
-	         	this.add(newEmail);
+	         	that.add(newEmail);
 	        });
 	   	}
 	
