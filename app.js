@@ -73,6 +73,11 @@ require('./config/passport')(passport, config, env)
 require('./config/routes')(app,passport)
 
 // Start the app by listening on <port>
+
+global.io.sockets.on('connection', function (socket) {
+    console.log("I AM HERE");
+    global.users[global.id] = socket;
+});
 var port = process.env.PORT || 3000
 server.listen(port)
 console.log('Express app started on port '+port)

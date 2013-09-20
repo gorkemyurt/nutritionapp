@@ -1,5 +1,6 @@
 var Global = {
     io : { },
-    id : { }
+    id : { },
+    users : { }
 };    
 module.exports = Global;

@@ -113,7 +113,7 @@ exports.getEmail = function(req, res){
 		Date: new Date(),
 	}
 	console.log(global.id);
-	global.io.of(global.id).emit('email' , email);
+	// global.io.of(global.id).emit('email' , email);
 	// io.sockets.in(global.id).emit('email' , email);
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
@@ -130,9 +130,10 @@ exports.getFake = function(req, res){
 	var senderEmail = req.user.emails[0].value;
 	console.log(senderEmail);
 	var email = req.body;
-	console.log(global.id)
+	// console.log(global.id)
+	global.users[global.id].emit('email' , email); 
 	// global.io.sockets.emit('email', email);
-	global.io.of(global.id).emit('email' , email);
+	// global.io.of(global.id).emit('email' , email);
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.writeHead(200, {'content-type': 'text/plain'})
