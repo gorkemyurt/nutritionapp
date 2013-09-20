@@ -113,7 +113,8 @@ exports.getEmail = function(req, res){
 		Date: new Date(),
 	}
 	console.log(global.id);
-	global.io.of(global.id).emit('email' , email);
+	// global.io.of(global.id).emit('email' , email);
+	io.sockets.in(global.id).emit('email' , email);
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.send(200);
