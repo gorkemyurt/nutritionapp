@@ -113,7 +113,6 @@ exports.getEmail = function(req, res){
     	socket.broadcast.emit('email', email);
   	});
 
-});
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.send(200);
 	});
