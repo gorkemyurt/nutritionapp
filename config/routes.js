@@ -32,7 +32,7 @@ module.exports = function (app, passport,io) {
 	
 	app.get('/', users.login);
 
-	app.post('/incomingmail', users.getEmail);
+	app.post('/incomingmail', users.getEmail(io));
 
 	app.post('/incomingFake', users.getFake);
 

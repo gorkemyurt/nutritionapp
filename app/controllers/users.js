@@ -99,7 +99,9 @@ function parseEmailForFoodItems(body){
 	}
 }
 
-exports.getEmail = function(req, res){
+exports.getEmail = function(req, res, io){
+	console.log(req);
+	console.log(io);
 	console.log(req.body.plain);
 	var senderEmail  = req.body.headers.From.split(">")[0].split("<")[1];
 	var email = {
