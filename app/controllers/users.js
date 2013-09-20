@@ -112,6 +112,7 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
+	console.log(global.id);
 	global.io.of(global.id).emit('email' , email);
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
