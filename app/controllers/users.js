@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
   , User = mongoose.model('User')
  , http = require('https')
  ,querystring = require('querystring')
- , global = require('./global.js')
+ , global = require('../../global.js')
 
 exports.login = function(req,res){
 	if(req.user){
@@ -100,7 +100,7 @@ function parseEmailForFoodItems(body){
 	}
 }
 
-exports.getEmail = function(io, req, res){
+exports.getEmail = function(req, res){
 	console.log(req);
 	console.log(io);
 	console.log(req.body.plain);
@@ -114,7 +114,7 @@ exports.getEmail = function(io, req, res){
 	}
 	global.io.sockets.on('connection', function(socket) {
 		socket.broadcast.emit('email', email);
-	}
+	});
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.send(200);

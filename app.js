@@ -30,8 +30,8 @@ var app = require('express')()
 global = require('./global.js');
 global.io = require('socket.io').listen(server);
 global.io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
+  global.io.set("transports", ["xhr-polling"]); 
+  global.io.set("polling duration", 10); 
 });
 
 // socket(io);
