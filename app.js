@@ -26,24 +26,25 @@ fs.readdirSync(models_path).forEach(function (file) {
 
 var app = require('express')()
   , server = require('http').createServer(app)
-  , io = require('socket.io').listen(server);
 
-
-io.configure(function () { 
+global = require('./global.js');
+global.io = require('socket.io').listen(server);
+global.io.configure(function () { 
   io.set("transports", ["xhr-polling"]); 
   io.set("polling duration", 10); 
 });
 
+// socket(io);
 
-io.sockets.on('connection', function (socket) {
-  // socket.on('my other event', function (data) {
-  //   console.log(data);
-  // });
-  socket.on('postEvent', function (data) {
-    socket.broadcast.emit('newPost', data);
-  });
+// io.sockets.on('connection', function (socket) {
+//   // socket.on('my other event', function (data) {
+//   //   console.log(data);
+//   // });
+//   socket.on('postEvent', function (data) {
+//     socket.broadcast.emit('newPost', data);
+//   });
 
-});
+// });
 
 
 

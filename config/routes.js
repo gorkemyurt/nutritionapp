@@ -11,7 +11,7 @@ var users = require('../app/controllers/users')
  */
 
 
-module.exports = function (app, passport,io) {
+module.exports = function (app, passport, io) {
 
  // twitter auth
 	
@@ -32,7 +32,7 @@ module.exports = function (app, passport,io) {
 	
 	app.get('/', users.login);
 
-	app.post('/incomingmail', users.getEmail(io));
+	app.post('/incomingmail', users.getEmail);
 
 	app.post('/incomingFake', users.getFake);
 

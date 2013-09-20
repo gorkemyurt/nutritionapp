@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
   , User = mongoose.model('User')
  , http = require('https')
  ,querystring = require('querystring')
+ , global = require('./global.js')
 
 exports.login = function(req,res){
 	if(req.user){
@@ -111,9 +112,9 @@ exports.getEmail = function(io, req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
-	io.sockets.on('connection', function (socket) {
-    	socket.broadcast.emit('email', email);
-  	});
+	global.io.sockets.on('connection', function(socket) {
+		socket.broadcast.emit('email', email);
+	}
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.send(200);
