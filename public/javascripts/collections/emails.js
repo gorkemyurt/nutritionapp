@@ -26,6 +26,12 @@ define([
 				var newEmail = new emailModel(data);
 				that.add(newEmail);
 			});
+			socket.of.on('email', function (data) {
+				console.log("aHEY aHEY")
+				var newEmail = new emailModel(data);
+				that.add(newEmail);
+			});
+
 	   	}
 	
 	});
