@@ -99,7 +99,7 @@ function parseEmailForFoodItems(body){
 	}
 }
 
-exports.getEmail = function(req, res, io){
+exports.getEmail = function(io, req, res){
 	console.log(req);
 	console.log(io);
 	console.log(req.body.plain);
