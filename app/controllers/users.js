@@ -6,6 +6,7 @@ var mongoose = require('mongoose')
 
 exports.login = function(req,res){
 	if(req.user){
+		console.log(req.user);
 		res.send(req.profile);
 		res.render('index');
 	}
@@ -110,7 +111,7 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
-	global.io.sockets.emit('email' , email);
+	global.io.of("/" + req.user.id).sockets.emit('email' , email);
 
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
