@@ -114,7 +114,7 @@ exports.getEmail = function(req, res){
 		Date: new Date(),
 	}
 	User.findOne({email : senderEmail}, function(err, user){
-		global.users[user.id].emit('email' , email); 
+		global.users[user.googleID].emit('email' , email); 
 	});
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
@@ -137,8 +137,12 @@ exports.getFake = function(req, res){
 	console.log(req);
 	console.log(req.user.id);
 	console.log(global.id);
+	User.findOne({email : senderEmail}, function(err, user){
+		console.log(user);
+		// global.users[user.id].emit('email' , email); 
+	});
 	// if(global.email == )
-	global.users[global.id].emit('email' , email); 
+	// global.users[global.id].emit('email' , email); 
 	// global.io.sockets.emit('email', email);
 	// global.io.of(global.id).emit('email' , email);
 
