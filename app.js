@@ -55,7 +55,7 @@ require('./config/express')(app, config, passport)
 require('./config/passport')(passport, config, env)
 
 // Bootstrap routes
-require('./config/routes')(app,passport,io)
+require('./config/routes')(app,passport)
 
 // Start the app by listening on <port>
 var port = process.env.PORT || 3000
