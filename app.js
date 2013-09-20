@@ -76,10 +76,17 @@ require('./config/routes')(app,passport)
 
 // Start the app by listening on <port>
 
+
+
 global.io.sockets.on('connection', function (socket) {
-    console.log("I AM HERE");
-    console.log(global.id);
-    global.users[global.id] = socket;
+      console.log("I AM HERE");
+      global.users[global.id] = socket
+    //   global.users[global.id + 1] = socket;
+    // }
+    // else{
+    //   global.users[global.id] = socket;
+    // }
+    console.log(Object.keys(global.users))
 });
 
 var port = process.env.PORT || 3000
