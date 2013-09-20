@@ -13,7 +13,7 @@ exports.login = function(req,res){
 	}
 }
 
-exports.emails = function(req,res){
+exports.emails = function(req,res,){
 	User.findOne({googleID : req.user.id},function(err, user){
 		res.send(user.SentEmails);
 	})
@@ -109,7 +109,11 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
-	socket.broadcast.emit('email', email);
+	io.sockets.on('connection', function (socket) {
+    	socket.broadcast.emit('email', email);
+  	});
+
+});
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.send(200);
 	});
