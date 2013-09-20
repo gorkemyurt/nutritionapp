@@ -34,6 +34,8 @@ global.io.configure(function () {
   global.io.set("polling duration", 10); 
 });
 
+
+
 // socket(io);
 
 // io.sockets.on('connection', function (socket) {

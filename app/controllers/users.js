@@ -111,7 +111,7 @@ exports.getEmail = function(req, res){
 		Date: new Date(),
 	}
 	global.io.sockets.on('connection', function(socket) {
-		socket.broadcast.emit('email', email);
+		socket.emit('email', email);
 	});
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
