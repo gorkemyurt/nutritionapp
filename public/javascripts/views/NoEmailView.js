@@ -29,10 +29,12 @@ define([
 	              Date : new Date(),
 	              FoodItems: emailObject
 	          });
-	          var newEmailsCol = new Emails();
-	          newEmailsCol.add(myEmail);
-	          myEmail.save();
-	          location.reload();
+	          // var newEmailsCol = new Emails();
+	          this.collection.add(myEmail);
+	          var that = this;
+	          myEmail.save().complete(function(){
+	          	that.collection.trigger("refresh");
+	          })
 
 	    }
 

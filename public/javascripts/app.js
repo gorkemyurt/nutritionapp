@@ -8,7 +8,7 @@ define([
 	], function (Marionette, EmailsView, FormView, Emails , LabelView, NoEmailView) {
 
     // set up the app instance
-    var MyApp = new Marionette.Application();
+    var MyApp = new Backbone.Marionette.Application()
 
     MyApp.addRegions({
 	      list: "#list",
@@ -17,9 +17,12 @@ define([
         welcome: "#welcome"
     });
 
-    MyApp.addInitializer(function(){
-          MyApp.emails = new Emails();
-          console.log(MyApp.emails.length);
+
+    MyApp.emails = new Emails();
+
+
+    function conditional(){
+        console.log(MyApp.emails.length);
          var months = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December'];
           var that = this;
           MyApp.emails.fetch().complete(function(){       
@@ -30,13 +33,35 @@ define([
 
                     MyApp.label.show(new LabelView());
                     MyApp.list.show(new EmailsView({collection: MyApp.emails }));
+                    MyApp.welcome.close();
 
                 }
                 else{
                   console.log("THATS WHY IT DOESNT WORK");
-                  MyApp.welcome.show(new NoEmailView());
+                  MyApp.welcome.show(new NoEmailView({collection: MyApp.emails }));
+
                 }
          });
+    }
+
+    function conditionalNoFetch(){
+       if(MyApp.emails.length > 0 ){
+            MyApp.label.show(new LabelView());
+            MyApp.list.show(new EmailsView({collection: MyApp.emails }));
+            MyApp.welcome.close();
+
+        }
+        else{
+          console.log("THATS WHY IT DOESNT WORK");
+          MyApp.welcome.show(new NoEmailView({collection: MyApp.emails }));
+
+        }
+
+    }
+
+    MyApp.addInitializer(function(){
+        MyApp.listenTo(MyApp.emails, 'refresh', conditionalNoFetch);
+        conditional();
     });
 
     MyApp.start();
