@@ -4,8 +4,8 @@ define([
 	'backbone',
 	'Email',
 	'marionette',
-	'localStorage'
-], function ($, _, Backbone, emailModel, Marionette) {
+	'socketio'
+], function ($, _, Backbone, emailModel, Marionette, io) {
 	'use strict';
 
 	var Emails = Backbone.Collection.extend({
@@ -14,14 +14,12 @@ define([
 	    model : emailModel,
 
 	   	initialize : function() {
-	   		// var months = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December'];
-	   		// var that = this;          
-	   		// this.fetch().complete(function(){
-		   	// 	_.each(that.models, function(item){
-	     //            item.set("Date", months[new Date(item.get("Date")).getMonth()] + " " + new Date(item.get("Date")).getUTCDate());
-      //     		});
-	   		// });
-
+		    var socket = io.connect('http://staginggorkemnutrition.herokuapp.com');
+	          socket.on('email', function (data) {
+	          var newEmail = new emailModel(data);
+	          this.add(newEmail);
+	          // socket.emit('my other event', { my: 'data' });
+	        });
 	   	}
 	
 	});

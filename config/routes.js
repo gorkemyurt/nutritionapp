@@ -11,7 +11,7 @@ var users = require('../app/controllers/users')
  */
 
 
-module.exports = function (app, passport) {
+module.exports = function (app, passport,io) {
 
  // twitter auth
 	

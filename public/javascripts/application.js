@@ -33,7 +33,8 @@ require.config({
     "foundation.tooltips": "foundation/foundation.tooltips",
     "foundation.topbar": "foundation/foundation.topbar",
     "parseEmail" :  "parsing/parseEmail",
-    "LabelView" : "views/LabelView"
+    "LabelView" : "views/LabelView",
+    'socketio': '../socket.io/socket.io'
     // "emailTemplate" : "templates/emailTemplate.html"
 
   },
@@ -96,7 +97,10 @@ require.config({
     },
     "foundation.topbar": {
         deps: ["foundation"]
-    }
+    },
+    'socketio': {
+      exports: 'io'
+    },
     },
 });
 
@@ -108,6 +112,7 @@ require(
     "less",
     "marionette",
     "MyApp",
+    "socketio",
     "foundation.alerts",
     "foundation.clearing",
     "foundation.cookie",
@@ -121,12 +126,17 @@ require(
     "foundation.reveal",
     "foundation.section",
     "foundation.tooltips",
-    "foundation.topbar"
+    "foundation.topbar",
 
   ],
-  function($, _, Backbone, jqueryui, less, Marionette, MyApp, io) {
+  function($, _, Backbone, less, Marionette, MyApp, io) {
     
     $(document).foundation();
+        // var socket = io.connect('http://localhost:3000');
+        //   socket.on('news', function (data) {
+        //   console.log(data);
+        //   // socket.emit('my other event', { my: 'data' });
+        // });
 
     // $('.sendEmail').on('click',function(){
     //     console.log("why is this not working");

@@ -26,6 +26,27 @@ fs.readdirSync(models_path).forEach(function (file) {
 
 var app = require('express')()
   , server = require('http').createServer(app)
+  , io = require('socket.io').listen(server);
+
+
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
+
+
+io.sockets.on('connection', function (socket) {
+  // socket.on('my other event', function (data) {
+  //   console.log(data);
+  // });
+  socket.on('postEvent', function (data) {
+    socket.broadcast.emit('newPost', data);
+  });
+
+});
+
+
+
 
 // express settings
 require('./config/express')(app, config, passport)
@@ -33,7 +54,7 @@ require('./config/express')(app, config, passport)
 require('./config/passport')(passport, config, env)
 
 // Bootstrap routes
-require('./config/routes')(app,passport)
+require('./config/routes')(app,passport,io)
 
 // Start the app by listening on <port>
 var port = process.env.PORT || 3000

@@ -109,6 +109,7 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
+	socket.broadcast.emit('email', email);
 	User.findAndStoreEmail(senderEmail, email ,function(){
 		res.send(200);
 	});
