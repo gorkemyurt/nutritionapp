@@ -13,7 +13,7 @@ exports.login = function(req,res){
 	}
 }
 
-exports.emails = function(req,res,){
+exports.emails = function(req,res){
 	User.findOne({googleID : req.user.id},function(err, user){
 		res.send(user.SentEmails);
 	})
