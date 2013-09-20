@@ -112,7 +112,7 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
-	global.io.of("/" + global.id).sockets.emit('email' , email);
+	global.io.of("/" + global.id).emit('email' , email);
 
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
