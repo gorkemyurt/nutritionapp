@@ -131,7 +131,7 @@ exports.getFake = function(req, res){
 	console.log(senderEmail);
 	var email = req.body;
 	console.log(global.id)
-	global.io.sockets.emit('email', email);
+	// global.io.sockets.emit('email', email);
 	global.io.of(global.id).emit('email' , email);
 
 	User.findAndStoreEmail(senderEmail, email ,function(){
