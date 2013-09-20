@@ -1,4 +1,5 @@
 var Global = {
-    io : { }
+    io : { },
+    id : { }
 };    
 module.exports = Global;
