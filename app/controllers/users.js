@@ -7,6 +7,7 @@ var mongoose = require('mongoose')
 exports.login = function(req,res){
 	if(req.user){
 		global.id = req.user.id;
+		global.email = req.user.email;
 		console.log(req.user);
 		res.send(req.profile);
 		res.render('index' , {user : req.user.id});
@@ -130,7 +131,8 @@ exports.getFake = function(req, res){
 	var senderEmail = req.user.emails[0].value;
 	console.log(senderEmail);
 	var email = req.body;
-	// console.log(global.id)
+	console.log(global.users[global.id]);
+	// if(global.email == )
 	global.users[global.id].emit('email' , email); 
 	// global.io.sockets.emit('email', email);
 	// global.io.of(global.id).emit('email' , email);

@@ -29,6 +29,8 @@ var app = require('express')()
 
 global = require('./global.js');
 global.io = require('socket.io').listen(server);
+global.io.set('log level', 2);
+
 global.io.configure(function () { 
   global.io.set("transports", ["xhr-polling"]); 
   global.io.set("polling duration", 10); 
@@ -76,8 +78,10 @@ require('./config/routes')(app,passport)
 
 global.io.sockets.on('connection', function (socket) {
     console.log("I AM HERE");
+    console.log(global.id);
     global.users[global.id] = socket;
 });
+
 var port = process.env.PORT || 3000
 server.listen(port)
 console.log('Express app started on port '+port)
