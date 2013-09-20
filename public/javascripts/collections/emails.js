@@ -15,9 +15,11 @@ define([
 
 	   	initialize : function() {
 	   		var that = this;
+	   		var userid = $('#userid').text();
+			console.log(userid);
 		    // var socket = io.connect('http://staginggorkemnutrition.herokuapp.com/108979240932274925946');
 		    var socket = io.connect('http://staginggorkemnutrition.herokuapp.com');
-	         socket.of("108979240932274925946").on('email', function (data) {
+	         socket.of(userid).on('email', function (data) {
 	         	console.log("HEY HEY")
 	         	var newEmail = new emailModel(data);
 	         	that.add(newEmail);

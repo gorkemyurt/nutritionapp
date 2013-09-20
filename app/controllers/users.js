@@ -9,7 +9,7 @@ exports.login = function(req,res){
 		global.id = req.user.id;
 		console.log(req.user);
 		res.send(req.profile);
-		res.render('index');
+		res.render('index' , {user : req.user.id});
 	}
 	else{
 		res.render('login')

@@ -132,6 +132,14 @@ require(
   function($, _, Backbone, less, Marionette, MyApp, io) {
     
     $(document).foundation();
+        // $.ajax({
+        //   type: "GET",
+        //   url: '/user',
+        //   success :function(data){
+        //     window.user  = data;
+        //   }
+        // });
+
     // $( document ).ready(function() {
     //     window.socket = io.connect('http://localhost:3000');
     // });
