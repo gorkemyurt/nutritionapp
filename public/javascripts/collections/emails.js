@@ -17,9 +17,7 @@ define([
 	   		var that = this;
 	   		var userid = $('#userid').text();
 			console.log(userid);
-		    // var socket = io.connect('http://staginggorkemnutrition.herokuapp.com/108979240932274925946');
 		    var socket = io.connect();
-		    // var socket = io.connect('http://localhost:3000');
 
 			socket.on('email', function (data) {
 				console.log("aHEY aHEY")
