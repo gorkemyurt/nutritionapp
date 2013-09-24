@@ -37,11 +37,11 @@ define([
 		},
 
 		editModel : function(e){
-			if($(".edit-panel").is(':visible')){
-				$(".edit-panel").slideUp();
+			if($("#" + this.model.id).is(':visible')){
+				$("#" + this.model.id).slideUp();
 			}
 			else{
-				$(".edit-panel").slideDown();
+				$("#" + this.model.id).slideDown();
 			}
 		},
 
