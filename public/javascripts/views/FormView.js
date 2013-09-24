@@ -25,11 +25,17 @@ define([
               FoodItems: emailObject
           });
           // console.log(this.collection.models);
-          this.collection.add(myEmail);
+          
           // console.log(this.collection.models);
-          // myEmail.save();
+          myEmail.save({}, {
+            success : function(res, err){
+              console.log(res);
+              console.log(err);
+            }
+        });
+          // this.collection.add(myEmail);
 
-        }
+      }
 
     });
 

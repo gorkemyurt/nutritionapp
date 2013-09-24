@@ -48,7 +48,7 @@ userSchema.statics = {
 					newEmail.save(function (err){
 						user[0].SentEmails.push(newEmail);
 						user[0].save();
-						cb();
+						cb(newEmail);
 					})
 				}
 				else{
