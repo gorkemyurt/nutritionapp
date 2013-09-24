@@ -32,5 +32,32 @@
                                     <p class="Secondary Label"><%= item.Name %></p>
                               <% } %>
                         <% }); %>
+                  <div class="edit-icons right blue">
+                        <i class="foundicon-trash"></i> <span class="delete-link"> Delete </span>
+                  </div>
             </div>
+            <div class="edit-panel" id=<%= _id %>>
+                  <h3> Items:  </h3>
+                  <% _.each(FoodItems, function(item) { %>
+                        <% if(item.HealthRate == 1) { %>
+                        <div class="edit-wrapper">
+                              <div class="alert-box success meal-edit-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span> </div>
+                        </div>
+                        <% } %>
+                        <% if(item.HealthRate == 2) { %>
+                              <div class="alert-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                        <% } %>
+                        <% if(item.HealthRate == 3) { %>
+                              <div class="alert-box alert"><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                        <% } %>
+                        <% if(item.HealthRate == null && item.Name != "") { %>
+                              <div class="alert-box secondary"><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                        <% } %>
+                  <% }); %>
+                  <p><input type="text" class="new-meal" placeholder="New Food Item Name">
+                  <a href="#" class="button submit-new-meal expand">Send Food Log</a></p>
+            </div>  
+
+            </div>
+
       </div>

@@ -2,7 +2,7 @@
  * Controllers
  */
 
-var posts = require('../app/controllers/posts')
+var emails = require('../app/controllers/emails')
 var users = require('../app/controllers/users')
 
 
@@ -22,7 +22,6 @@ module.exports = function (app, passport) {
 		function(req,res){
 			// console.log(req);
 			res.redirect("/");
-
 	});
 
 	app.get('/logout', function(req,res){
@@ -36,9 +35,18 @@ module.exports = function (app, passport) {
 
 	app.post('/incomingFake', users.getFake);
 
+	app.post('/email' ,users.getFake);
+
 	app.post('/emails', users.getFake);
 	
 	app.get('/emails', users.emails);
+
+	// app.post('/email', emails.newMail);
+
+	app.delete('/email/:id' , emails.deleteEmail);
+
+	app.put('/email/:id' , emails.updateEmail);
+
 	// app.get('/projects', posts.projects);
 	// app.get('/posts', posts.postlist);
 

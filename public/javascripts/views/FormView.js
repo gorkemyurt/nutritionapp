@@ -27,7 +27,7 @@ define([
           // console.log(this.collection.models);
           this.collection.add(myEmail);
           // console.log(this.collection.models);
-          myEmail.save();
+          // myEmail.save();
 
         }
 

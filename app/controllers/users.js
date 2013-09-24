@@ -30,10 +30,12 @@ function noNumberParse(foodItems) {
 		var tempnumber = foodItems[item].match(/[0-9]/g);
 		if(tempnumber){
 			var temp = foodItems[item].split(/[0-9]/)
+			temp[0]  = temp[0].replace(" " , "");
 			var tempobject = {Name : temp[0] , HealthRate : parseInt(tempnumber)}
 			foodItemsObject.push(tempobject);
 		}
 		else{
+			foodItems[item] = foodItems[item].replace(" " , "");
 			var tempobject = {Name : foodItems[item] , HealthRate : parseInt(tempnumber)}
 			foodItemsObject.push(tempobject);
 		}
@@ -46,6 +48,7 @@ function numberParse(foodItems,numbersList){
 	for  (var item in foodItems){
 		console.log(foodItems[item]);
 		if(foodItems[item] != "" || "/n"){
+			foodItems[item] = foodItems[item].replace(" " , "");
 			var tempobject = {Name : foodItems[item] , HealthRate : numbersList[item]}
 			console.log(tempobject);
 			foodItemsObject.push(tempobject);
@@ -126,7 +129,6 @@ exports.getEmail = function(req, res){
 }
 
 
-
 exports.getFake = function(req, res){
 	console.log("hey");
 	console.log(req.body)
@@ -136,9 +138,6 @@ exports.getFake = function(req, res){
 
 	// console.log(global.users[global.id]);
 	// console.log(global.users[global.id])
-	console.log(req);
-	console.log(req.user.id);
-	console.log(global.id);
 	User.findOne({email : senderEmail}, function(err, user){
 		console.log(user);
 		// global.users[user.id].emit('email' , email); 

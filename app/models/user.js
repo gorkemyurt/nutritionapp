@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
     ,Schema = mongoose.Schema
     , Email = mongoose.model('Email')
-   , EmailSchema = require('../models/email.js');
+   , EmailSchema = mongoose.model('Email').schema;
 
 var userSchema = new Schema({
 	googleID : String,

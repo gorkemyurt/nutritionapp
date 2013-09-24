@@ -5,10 +5,14 @@ function noNumberParse(foodItems) {
 		var tempnumber = foodItems[item].match(/[0-9]/g);
 		if(tempnumber){
 			var temp = foodItems[item].split(/[0-9]/)
+			temp[0]  = temp[0].replace(" " , "");
+			temp[0]  = temp[0].replace(" " , "");
 			var tempobject = {Name : temp[0] , HealthRate : parseInt(tempnumber)}
 			foodItemsObject.push(tempobject);
 		}
 		else{
+			foodItems[item] = foodItems[item].replace(" " , "");
+			foodItems[item] = foodItems[item].replace(" " , "");
 			var tempobject = {Name : foodItems[item] , HealthRate : parseInt(tempnumber)}
 			foodItemsObject.push(tempobject);
 		}
@@ -21,6 +25,9 @@ function numberParse(foodItems,numbersList){
 	for  (var item in foodItems){
 		console.log(foodItems[item]);
 		if(foodItems[item] != "" || "/n"){
+			foodItems[item] = foodItems[item].replace(" " , "");
+			foodItems[item] = foodItems[item].replace(" " , "");
+			console.log("	herererere");
 			var tempobject = {Name : foodItems[item] , HealthRate : numbersList[item]}
 			console.log(tempobject);
 			foodItemsObject.push(tempobject);
@@ -28,7 +35,6 @@ function numberParse(foodItems,numbersList){
 	}
 	return foodItemsObject;
 }
-
 
 
 function parseEmailForFoodItems(body){

@@ -1,3 +1,16 @@
+@nice-blue: #5B83AD;
+@light-blue: (@nice-blue + #111);
+@nice-blue: #0099cc;
+@nice-red: #F02425;
+@dark-grey-blue: #31313b;
+@dark-violet: #4417a6;
+@vivid-orange: #eb540a;
+@very-dark-blue: #14446a ;
+@soft-yellow: #f6f154 ;
+@vivid-red: #f31347;
+@turk-green: #2dbba6;
+
+
 body { background-color: #fcfcf9;
 		font-size: 16px;
 		line-height: 1.5em;
@@ -57,6 +70,7 @@ header{
 }
 
 .meal-info{
+	cursor: pointer;
 	padding-left: 5%;
 }
 
@@ -69,8 +83,22 @@ header{
 	position: absolute;
 }
 
+.blue{
+	color: @nice-blue;
+}
 
+.edit-icons{
+	display: none;
+	cursor: pointer;
+}
 
+.edit-panel{
+	display:none;
+	// padding-bottom: 50px;
+}
 
+.delete-fooditem{
+	cursor: pointer;
+}
 
 
