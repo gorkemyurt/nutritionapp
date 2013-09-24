@@ -14,7 +14,8 @@ define([
     		"mouseleave .panel" : "handleMouseLeave",
     		"click .meal-info" : "editModel",
     		"click .delete-link" : "deleteModel",
-    		"click .delete-fooditem" : "deleteFoodItem"
+    		"click .delete-fooditem" : "deleteFoodItem",
+    		"click .submit-new-meal-input" : "addToModel"
 		},
 
 		template: _.template(emailTemplate),
@@ -90,11 +91,29 @@ define([
 			}});
 		},
 
-		// onBeforeRender: function(){
-		// 	console.log("this was called");
-		// 	$(".edit-panel").css("display" , "block");
+		addToModel : function(e){
+			var Name = $(e.currentTarget).parent().find(".new-meal-input").val();
+			var HealthRating = $(e.currentTarget).parent().find(".current").text();
+			var NumberRating = 0;
+			if(HealthRating == "Healty"){
+				NumberRating = 1;
+			}
+			else if(HealthRating == "Medium"){
+				NumberRating = 2;
+			}
+			else if(HealthRating == "Unhealty"){
+				NumberRating = 3;
+			}
+			var newFoodItem = {Name: Name, HealthRate: NumberRating.toString()} 
+			var currentArray = this.model.get("FoodItems");
+			currentArray.push(newFoodItem);
+			this.model.set("FoodItems", currentArray);
+			this.SpecialRender($(e.currentTarget).parent().parent());
+			this.model.save();
+			
 
-  // 		},
+		},
+
 
 		handleMouseEnter : function(e){
 			$(e.currentTarget).find(".edit-icons").toggle();
