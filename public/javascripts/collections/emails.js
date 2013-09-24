@@ -21,6 +21,7 @@ define([
 
 			socket.on('email', function (data) {
 				console.log("aHEY aHEY")
+				console.log(data);
 				var newEmail = new emailModel(data);
 				that.add(newEmail);
 			});

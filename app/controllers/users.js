@@ -116,11 +116,11 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
-	User.findOne({email : senderEmail}, function(err, user){
-		if(global.users[user.googleID]){
-			global.users[user.googleID].emit('email' , email); 
-		}
-	});
+	// User.findOne({email : senderEmail}, function(err, user){
+	// 	if(global.users[user.googleID]){
+	// 		global.users[user.googleID].emit('email' , email); 
+	// 	}
+	// });
 
 	User.findAndStoreEmail(senderEmail, email ,function(email1){
 		User.findOne({email : senderEmail}, function(err, user){
