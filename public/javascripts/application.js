@@ -34,26 +34,30 @@ require.config({
     "foundation.topbar": "foundation/foundation.topbar",
     "parseEmail" :  "parsing/parseEmail",
     "LabelView" : "views/LabelView",
-    'socketio': '../socket.io/socket.io'
+    'socketio': '../socket.io/socket.io',
+    "zepto" : 'lib/zepto'
     // "emailTemplate" : "templates/emailTemplate.html"
 
   },
   shim: {
+    'zepto':{
+        exports: '$'
+    },
     'underscore': {
       exports: '_'
     },
     'backbone': {
-      deps: ["underscore", "jquery"],
+      deps: ["underscore", "zepto"],
       exports: 'Backbone'
     },
     'bootstrap' : {
-        deps: ["jquery"]
+        deps: ["zepto"]
     },
     'jquery-ui' : {
-        deps : ["jquery"]
+        deps : ["zepto"]
     },
     'marionette' : {
-      deps : ["backbone", "underscore", "jquery"],
+      deps : ["backbone", "underscore", "zepto"],
       exports: 'Marionette'
     },
     "foundation": {
@@ -106,7 +110,7 @@ require.config({
 
 require(
 
-  ["jquery",
+  [
     "underscore",
     "backbone",
     "less",
@@ -129,7 +133,7 @@ require(
     "foundation.topbar",
 
   ],
-  function($, _, Backbone, less, Marionette, MyApp, io) {
+  function(_, Backbone, less, Marionette, MyApp, io) {
     
     $(document).foundation();
         // $.ajax({

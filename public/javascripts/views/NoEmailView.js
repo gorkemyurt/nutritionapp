@@ -1,5 +1,4 @@
 define([
-	'jquery',
 	'underscore',
 	'backbone',
 	'marionette',
@@ -8,7 +7,7 @@ define([
 	// 'text!templates/NoEmailTemplate.html',
 	'Emails'
 
-], function ($, _, Backbone, Marionette,Email,parseEmail , Emails ) {
+], function (_, Backbone, Marionette,Email,parseEmail , Emails ) {
 	'use strict';
 
 

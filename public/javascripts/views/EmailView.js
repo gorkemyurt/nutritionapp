@@ -1,10 +1,9 @@
 define([
-	'jquery',
 	'underscore',
 	'backbone',
 	'marionette',
 	'text!templates/emailTemplate.html'
-], function ($, _, Backbone, Marionette, emailTemplate) {
+], function ( _, Backbone, Marionette, emailTemplate) {
 	'use strict';
 
 	var EmailView = Backbone.Marionette.ItemView.extend({
@@ -12,10 +11,12 @@ define([
     		"click button" : " sendFakeEmail",
     		"mouseenter .panel" : "handleMouseEnter",
     		"mouseleave .panel" : "handleMouseLeave",
-    		"click .meal-info" : "editModel",
+    		// "click .meal-info" : "editModel",
+    		"touch .meal-info" : "editModel",
     		"click .delete-link" : "deleteModel",
     		"click .delete-fooditem" : "deleteFoodItem",
-    		"click .submit-new-meal-input" : "addToModel"
+    		"click .submit-new-meal-input" : "addToModel",
+    		"touch .delete-fooditem" : "deleteModel"
 		},
 
 		template: _.template(emailTemplate),
@@ -49,13 +50,14 @@ define([
 		deleteFoodItem : function(e){
 			var deletedItem = $(e.currentTarget).parent().text().split("X")[0];
 			deletedItem =  deletedItem.replace(" ","");
-			$(e.currentTarget).parent().slideUp();
+			$(e.currentTarget).parent().slideUp(2000);
+			console.log("this is getting used");
 			var curitems = _.pluck(this.model.get("FoodItems"), "Name");
 			var index = curitems.indexOf(deletedItem);
 			var currentModel = this.model.get("FoodItems");
 			currentModel.splice(index,1);
 			this.model.set("FoodItems", currentModel);
-			this.model.trigger('change');
+			// this.model.trigger('change');
 			this.SpecialRender($(e.currentTarget).parent().parent());
 			this.model.save();
 		},
