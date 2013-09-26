@@ -8,21 +8,22 @@ define([
 
 	var EmailView = Backbone.Marionette.ItemView.extend({
 		events:{
-    		"click button" : " sendFakeEmail",
-    		"mouseenter .panel" : "handleMouseEnter",
-    		"mouseleave .panel" : "handleMouseLeave",
-    		"click .meal-info" : "editModel",
-    		"touchend .meal-info" : "editModel",
-    		"click .delete-link" : "deleteModel",
-    		// "click .delete-fooditem" : "deleteFoodItem",
-    		"touchend .delete-fooditem" : "deleteFoodItem",
-    		"click .submit-new-meal-input" : "addToModel",
-    		"touch .delete-fooditem" : "deleteModel"
-		},
+			
+				"touchend .delete-fooditem" : "deleteFoodItem",
+				"touchend .meal-info" : "editModel"
+				"click .delete-fooditem" : "deleteFoodItem",
+				"click .meal-info" : "editModel",
+	    		"click button" : " sendFakeEmail",
+	    		"mouseenter .panel" : "handleMouseEnter",
+	    		"mouseleave .panel" : "handleMouseLeave",
+	    		"click .delete-link" : "deleteModel",
+	    		"click .submit-new-meal-input" : "addToModel"
+    	},
 
 		template: _.template(emailTemplate),
 
 		initialize : function(){
+			console.log(window.mobilecheck);
 			_.bindAll(this);
     		this.model.on('change', this.render);
     		this.model.on('change-item', this.renderChange);
@@ -40,6 +41,7 @@ define([
 		},
 
 		editModel : function(e){
+			if(window.mobilecheck) return
 			if($("#" + this.model.id).is(':visible')){
 				$("#" + this.model.id).slideUp();
 			}
