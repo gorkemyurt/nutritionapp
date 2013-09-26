@@ -14,8 +14,8 @@ define([
 				"click .delete-fooditem" : "deleteFoodItem",
 				// "click .meal-info" : "editModel",
 	    		"click button" : " sendFakeEmail",
-	    		"mouseenter .panel" : "handleMouseEnter",
-	    		"mouseleave .panel" : "handleMouseLeave",
+	    		// "mouseenter .panel" : "handleMouseEnter",
+	    		// "mouseleave .panel" : "handleMouseLeave",
 	    		"click .delete-link" : "deleteModel",
 	    		"click .submit-new-meal-input" : "addToModel"
     	},
