@@ -13,7 +13,7 @@ define([
 				"tap .delete-fooditem" : "deleteFoodItemTouch",
 				"tap .meal-info" : "editModelTouch",
 				"click .delete-fooditem" : "deleteFoodItem",
-				"click .meal-info" : "editModel",
+				// "click .meal-info" : "editModel",
 	    		"click button" : " sendFakeEmail",
 	    		// "mouseenter .panel" : "handleMouseEnter",
 	    		// "mouseleave .panel" : "handleMouseLeave",
