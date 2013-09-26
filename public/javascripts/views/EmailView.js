@@ -42,6 +42,7 @@ define([
 
 		editModel : function(e){
 			if(window.mobilecheck) return
+			console.log("i am a mobile phone");
 			if($("#" + this.model.id).is(':visible')){
 				$("#" + this.model.id).slideUp();
 			}

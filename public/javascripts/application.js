@@ -35,7 +35,8 @@ require.config({
     "parseEmail" :  "parsing/parseEmail",
     "LabelView" : "views/LabelView",
     'socketio': '../socket.io/socket.io',
-    "zepto" : 'lib/zepto'
+    "zepto" : 'lib/zepto',
+    "zeptoTouch" : 'lib/zeptoTouch'
     // "emailTemplate" : "templates/emailTemplate.html"
 
   },
@@ -47,17 +48,17 @@ require.config({
       exports: '_'
     },
     'backbone': {
-      deps: ["underscore", "zepto"],
+      deps: ["underscore", "zepto", "zeptoTouch"],
       exports: 'Backbone'
     },
     'bootstrap' : {
-        deps: ["zepto"]
+        deps: ["zepto","zeptoTouch"]
     },
     'jquery-ui' : {
-        deps : ["zepto"]
+        deps : ["zepto","zeptoTouch"]
     },
     'marionette' : {
-      deps : ["backbone", "underscore", "zepto"],
+      deps : ["backbone", "underscore", "zepto", "zeptoTouch"],
       exports: 'Marionette'
     },
     "foundation": {
@@ -131,6 +132,7 @@ require(
     "foundation.section",
     "foundation.tooltips",
     "foundation.topbar",
+    "zeptoTouch"
 
   ],
   function(_, Backbone, less, Marionette, MyApp, io) {
