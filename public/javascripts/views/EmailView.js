@@ -9,8 +9,8 @@ define([
 	var EmailView = Backbone.Marionette.ItemView.extend({
 		events:{
 
-				"touchend .delete-fooditem" : "deleteFoodItem",
-				"touchend .meal-info" : "editModel",
+				"touchend .delete-fooditem" : "deleteFoodItemTouch",
+				"touchend .meal-info" : "editModelTouch",
 				"click .delete-fooditem" : "deleteFoodItem",
 				"click .meal-info" : "editModel",
 	    		"click button" : " sendFakeEmail",
@@ -50,7 +50,32 @@ define([
 			}
 		},
 
+		editModelTouch : function(e){
+			if($("#" + this.model.id).is(':visible')){
+				$("#" + this.model.id).slideUp();
+			}
+			else{
+				$("#" + this.model.id).slideDown();
+			}
+		},
+
 		deleteFoodItem : function(e){
+			if(window.mobilecheck) return
+			var deletedItem = $(e.currentTarget).parent().text().split("X")[0];
+			deletedItem =  deletedItem.replace(" ","");
+			$(e.currentTarget).parent().slideUp(2000);
+			console.log("this is getting used");
+			var curitems = _.pluck(this.model.get("FoodItems"), "Name");
+			var index = curitems.indexOf(deletedItem);
+			var currentModel = this.model.get("FoodItems");
+			currentModel.splice(index,1);
+			this.model.set("FoodItems", currentModel);
+			// this.model.trigger('change');
+			this.SpecialRender($(e.currentTarget).parent().parent());
+			this.model.save();
+		},
+ 
+		deleteFoodItemTouch : function(e){
 			var deletedItem = $(e.currentTarget).parent().text().split("X")[0];
 			deletedItem =  deletedItem.replace(" ","");
 			$(e.currentTarget).parent().slideUp(2000);
