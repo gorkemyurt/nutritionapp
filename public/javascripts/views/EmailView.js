@@ -54,12 +54,8 @@ define([
 		},
 
 		editModelTouch : function(e){
-			if($("#" + this.model.id).is(':visible')){
-				$("#" + this.model.id).slideUp();
-			}
-			else{
-				$("#" + this.model.id).slideDown();
-			}
+			$("#" + this.model.id).slideToggle()
+
 		},
 
 		deleteFoodItem : function(e){
