@@ -8,9 +8,9 @@ define([
 
 	var EmailView = Backbone.Marionette.ItemView.extend({
 		events:{
-			
+
 				"touchend .delete-fooditem" : "deleteFoodItem",
-				"touchend .meal-info" : "editModel"
+				"touchend .meal-info" : "editModel",
 				"click .delete-fooditem" : "deleteFoodItem",
 				"click .meal-info" : "editModel",
 	    		"click button" : " sendFakeEmail",
