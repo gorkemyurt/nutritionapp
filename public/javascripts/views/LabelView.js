@@ -1,5 +1,5 @@
 define([
-	'jquery',
+	'zepto',
 	'underscore',
 	'backbone',
 	'marionette',

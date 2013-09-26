@@ -1,9 +1,10 @@
 define([
+	'zepto',
 	'underscore',
 	'backbone',
 	'marionette',
 	'text!templates/emailTemplate.html'
-], function ( _, Backbone, Marionette, emailTemplate) {
+], function ($,_, Backbone, Marionette, emailTemplate) {
 	'use strict';
 
 	var EmailView = Backbone.Marionette.ItemView.extend({
@@ -12,7 +13,7 @@ define([
 				"tap .delete-fooditem" : "deleteFoodItemTouch",
 				"tap .meal-info" : "editModelTouch",
 				"click .delete-fooditem" : "deleteFoodItem",
-				// "click .meal-info" : "editModel",
+				"click .meal-info" : "editModel",
 	    		"click button" : " sendFakeEmail",
 	    		// "mouseenter .panel" : "handleMouseEnter",
 	    		// "mouseleave .panel" : "handleMouseLeave",
@@ -42,13 +43,14 @@ define([
 
 		editModel : function(e){
 			if(window.mobilecheck) return
-			console.log("i am a mobile phone");
-			if($("#" + this.model.id).is(':visible')){
-				$("#" + this.model.id).slideUp();
-			}
-			else{
-				$("#" + this.model.id).slideDown();
-			}
+			$("#" + this.model.id).slideToggle()
+			// console.log("i am a mobile phone");
+			// if($("#" + this.model.id).css('display') !== 'none'){
+			// 	$("#" + this.model.id).slideUp();
+			// }
+			// else{
+			// 	$("#" + this.model.id).slideDown();
+			// }
 		},
 
 		editModelTouch : function(e){

@@ -1,5 +1,5 @@
 define([
-	'jquery',
+	'zepto',
 	'underscore',
 	'backbone',
 	'Email',
@@ -15,8 +15,6 @@ define([
 
 	   	initialize : function() {
 	   		var that = this;
-	   		var userid = $('#userid').text();
-			console.log(userid);
 		    var socket = io.connect();
 
 			socket.on('email', function (data) {

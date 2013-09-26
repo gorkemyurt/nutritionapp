@@ -1,11 +1,12 @@
 define([
+  'zepto',
 	'underscore',
 	'backbone',
 	'marionette',
   'parseEmail',
   'Email'
 
-  ], function (_, Backbone, Marionette, parseEmail, Email) {
+  ], function ($,_, Backbone, Marionette, parseEmail, Email) {
 	'use strict';
 
     var FormView = Backbone.Marionette.ItemView.extend({
