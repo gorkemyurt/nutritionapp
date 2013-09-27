@@ -35,12 +35,11 @@
                               <% } %>
                         <% }); %>
             </div>
-            <div class="delete-container">
-                  <div class="edit-icons right blue">
-                        <i class="foundicon-trash"></i> <span class="delete-link"> Delete </span>
-                  </div>
-            </div>
+
             <div class="edit-panel" id= "<%= _id %>" >
+                  <div class="edit-icons right blue">
+                  <i class="foundicon-trash"></i> <span class="delete-link"> Delete </span>
+                  </div>
                   <h3> Items:  </h3>
                   <% _.each(FoodItems, function(item) { %>
                               <% if(item.HealthRate == 1) { %>

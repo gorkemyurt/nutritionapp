@@ -1,18 +1,30 @@
 function noNumberParse(foodItems) {
 	var foodItemsObject = [];
 	for  (var item in foodItems){
-		console.log(foodItems[item]);
 		var tempnumber = foodItems[item].match(/[0-9]/g);
 		if(tempnumber){
 			var temp = foodItems[item].split(/[0-9]/)
-			temp[0]  = temp[0].replace(" " , "");
-			temp[0]  = temp[0].replace(" " , "");
+
+			if(temp[0][0] == " "){
+				temp[0] = temp[0].substring(1)
+			}
+
+			if(temp[0][temp[0].length] == " "){
+				temp[0] = temp[0].substring(temp[0].length - 1)
+			}
+
 			var tempobject = {Name : temp[0] , HealthRate : parseInt(tempnumber)}
 			foodItemsObject.push(tempobject);
+			
 		}
 		else{
-			foodItems[item] = foodItems[item].replace(" " , "");
-			foodItems[item] = foodItems[item].replace(" " , "");
+			if(foodItems[item][0] == " "){
+				foodItems[item] = foodItems[item].substring(1)
+			}
+
+			if(foodItems[item][foodItems[item].length] == " "){
+				foodItems[item] = foodItems[item].substring(foodItems[item].length - 1)
+			}
 			var tempobject = {Name : foodItems[item] , HealthRate : parseInt(tempnumber)}
 			foodItemsObject.push(tempobject);
 		}
@@ -23,13 +35,17 @@ function noNumberParse(foodItems) {
 function numberParse(foodItems,numbersList){
 	var foodItemsObject = [];
 	for  (var item in foodItems){
-		console.log(foodItems[item]);
 		if(foodItems[item] != "" || "/n"){
-			foodItems[item] = foodItems[item].replace(" " , "");
-			foodItems[item] = foodItems[item].replace(" " , "");
-			console.log("	herererere");
+
+			if(foodItems[item][0] == " "){
+				foodItems[item] = foodItems[item].substring(1)
+			}
+
+			if(foodItems[item][foodItems[item].length] == " "){
+				foodItems[item] = foodItems[item].substring(foodItems[item].length - 1)
+			}
+
 			var tempobject = {Name : foodItems[item] , HealthRate : numbersList[item]}
-			console.log(tempobject);
 			foodItemsObject.push(tempobject);
 		}
 	}
