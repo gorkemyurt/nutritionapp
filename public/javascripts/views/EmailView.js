@@ -43,31 +43,28 @@ define([
 
 		editModel : function(e){
 			if(window.mobilecheck) return
-			$("#" + this.model.id).slideToggle()
-			// console.log("i am a mobile phone");
-			// if($("#" + this.model.id).css('display') !== 'none'){
-			// 	$("#" + this.model.id).slideUp();
-			// }
-			// else{
-			// 	$("#" + this.model.id).slideDown();
-			// }
+			$("#" + this.model.id).slideToggle();
 		},
 
 		editModelTouch : function(e){
-			$("#" + this.model.id).slideToggle()
+			$("#" + this.model.id).slideToggle();
 
 		},
 
 		deleteFoodItem : function(e){
 			if(window.mobilecheck) return
+
 			var deletedItem = $(e.currentTarget).parent().text().split("X")[0];
 			deletedItem =  deletedItem.replace(" ","");
+
 			$(e.currentTarget).parent().slideUp(2000);
-			console.log("this is getting used");
+
 			var curitems = _.pluck(this.model.get("FoodItems"), "Name");
 			var index = curitems.indexOf(deletedItem);
 			var currentModel = this.model.get("FoodItems");
+
 			currentModel.splice(index,1);
+			
 			this.model.set("FoodItems", currentModel);
 			// this.model.trigger('change');
 			this.SpecialRender($(e.currentTarget).parent().parent());
@@ -77,14 +74,16 @@ define([
 		deleteFoodItemTouch : function(e){
 			var deletedItem = $(e.currentTarget).parent().text().split("X")[0];
 			deletedItem =  deletedItem.replace(" ","");
+
 			$(e.currentTarget).parent().slideUp(2000);
-			console.log("this is getting used");
+
 			var curitems = _.pluck(this.model.get("FoodItems"), "Name");
 			var index = curitems.indexOf(deletedItem);
 			var currentModel = this.model.get("FoodItems");
+
 			currentModel.splice(index,1);
+
 			this.model.set("FoodItems", currentModel);
-			// this.model.trigger('change');
 			this.SpecialRender($(e.currentTarget).parent().parent());
 			this.model.save();
 		},

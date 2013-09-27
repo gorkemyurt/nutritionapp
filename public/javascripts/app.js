@@ -5,8 +5,9 @@ define([
   "FormView",
 	"Emails",
   "LabelView",
-  "NoEmailView"
-	], function ($, Marionette, EmailsView, FormView, Emails , LabelView, NoEmailView) {
+  "NoEmailView",
+  "Email"
+	], function ($, Marionette, EmailsView, FormView, Emails , LabelView, NoEmailView, Email) {
 
     // set up the app instance
     var MyApp = new Backbone.Marionette.Application()
@@ -24,39 +25,23 @@ define([
 
     function conditional(){
         var that = this;
-        console.log($);
         MyApp.emails.fetch( {success : function(){      
               if(MyApp.emails.length > 0 ){
 
                   MyApp.label.show(new LabelView());
                   MyApp.list.show(new EmailsView({collection: MyApp.emails }));
-                  MyApp.form.show(new FormView({collection: MyApp.emails }));
+                  MyApp.form.show(new FormView({ model : new Email(), collection: MyApp.emails  }));
 
                   MyApp.welcome.close();
-
               }
+
               else{
-                console.log("THATS WHY IT DOESNT WORK");
+              
                 MyApp.welcome.show(new NoEmailView({collection: MyApp.emails }));
 
               }
         }});
     }
-
-    // function conditionalNoFetch(){
-    //       if(MyApp.emails.length > 0 ){
-    //           MyApp.label.show(new LabelView());
-    //           MyApp.list.show(new EmailsView({collection: MyApp.emails }));
-    //           MyApp.welcome.close();
-
-    //       }
-    //       else{
-    //         console.log("THATS WHY IT DOESNT WORK");
-    //         MyApp.welcome.show(new NoEmailView({collection: MyApp.emails }));
-
-    //       }
-
-    // }
 
     MyApp.addInitializer(function(){
         MyApp.listenTo(MyApp.emails, 'refresh', conditional);

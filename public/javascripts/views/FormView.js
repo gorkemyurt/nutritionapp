@@ -4,36 +4,36 @@ define([
 	'backbone',
 	'marionette',
   'parseEmail',
-  'Email'
+  'Email',
+  'text!templates/formTemplate.html'
 
-  ], function ($,_, Backbone, Marionette, parseEmail, Email) {
+  ], function ($,_, Backbone, Marionette, parseEmail, Email, formTemplate) {
 	'use strict';
 
     var FormView = Backbone.Marionette.ItemView.extend({
 
-        template : '#formView',
+        template : _.template(formTemplate),
         events:{
           'click .sendEmail' : 'sendFakeEmail'
         },
 
-
         sendFakeEmail: function(){
           var emailObject =  parseEmailForFoodItems($("#fake-email").val());
           var myEmail = new Email({
-              Subject : "Not Specified",
+              Subject : $("#fake-email-input-area").val(),
               Date : new Date(),
               FoodItems: emailObject
           });
-          // console.log(this.collection.models);
-          
-          // console.log(this.collection.models);
-          myEmail.save({}, {
-            success : function(res, err){
-              console.log(res);
-              console.log(err);
+          $("#fake-email").val("");
+          $("#fake-email-input-area").val("");
+
+          var that = this;
+          this.model.save(myEmail , {
+            success: function (model, response){
+              that.collection.add(response);
+              console.log(response);
             }
-        });
-          // this.collection.add(myEmail);
+          });
 
       }
 

@@ -24,15 +24,17 @@ html(lang='en')
                     #welcome
             div.row
                 div.labels.small-12.large-3.medium-3.columns
-                    #label
+                    div#label
+                    div#form
                 div.small-12.large-9.medium-9.columns
                     #list
 
 
 
-        script(id="formView", type="text/template")
-            <input id="fake-email" type="text">
-            <a href="#" class="button expand sendEmail">Send Email</a>
+        //- script(id="formView", type="text/template")
+        //-     //- <input id="fake-email" class="fake-email-class" type="text" placeholder="Meal Name..">
+        //-     //- <textarea id="fake-email" type="text" placeholder="Food Log"></textarea>
+        //-     //- <a href="#" class="button expand sendEmail">Send</a>
 
         script(id="NoEmailTemplate", type="text/template")
             <div class="large-12 large-centered columns center">

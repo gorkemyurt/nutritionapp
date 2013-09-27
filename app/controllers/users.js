@@ -116,11 +116,6 @@ exports.getEmail = function(req, res){
 		FoodItems : parseEmailForFoodItems(req.body.plain),
 		Date: new Date(),
 	}
-	// User.findOne({email : senderEmail}, function(err, user){
-	// 	if(global.users[user.googleID]){
-	// 		global.users[user.googleID].emit('email' , email); 
-	// 	}
-	// });
 
 	User.findAndStoreEmail(senderEmail, email ,function(email1){
 		User.findOne({email : senderEmail}, function(err, user){
@@ -134,27 +129,13 @@ exports.getEmail = function(req, res){
 
 }
 
-
 exports.getFake = function(req, res){
 	var senderEmail = req.user.emails[0].value;
 	var email = req.body;
-
-	// console.log(global.users[global.id]);
-	// console.log(global.users[global.id])
-	User.findOne({email : senderEmail}, function(err, user){
-		// console.log(user);
-		// global.users[user.id].emit('email' , email); 
-	});
-	// if(global.email == )
-	// global.users[global.id].emit('email' , email); 
-	// global.io.sockets.emit('email', email);
-	// global.io.of(global.id).emit('email' , email);
-
-	User.findAndStoreEmail(senderEmail, email ,function(err, email){
-		console.log(email);
-		res.send(email);
-		res.writeHead(200, {'content-type': 'text/plain'})
-    	res.end('Message Received. Thanks!\r\n')
+	User.findAndStoreEmail(senderEmail, email ,function(email){
+		// res.send(email);
+		// res.writeHead(200, {'content-type': 'text/plain'})
+    	res.send(email)
 	})
 
 
