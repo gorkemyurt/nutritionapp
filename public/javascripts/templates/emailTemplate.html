@@ -1,83 +1,74 @@
 
-<!-- 
-<div class="small-12 large-3 medium-3 columns labels">
+<div class="panel">
+      <p class="right"><%= Date %> </p>
+      <div class="meal-info">
+            <% if( Subject ) {%>
+                  <p class="mealname"> <b> Meal Name: </b> <%= Subject %> </p>
+            <% } else { %>
+                  <p class="mealname"> <b> Meal Name: </b> No Meal Name </p>
+            <% } %>
 
-      <div class= "Success Label cover"> healthiest </div>
-      <div class= "Regular Label cover"> medium Health </div>
-      <div class= "Alert Label cover"> Unhealthy </div>
-      <div class= "Secondary Label cover"> no Rating </div>
-</div> -->
-
-      <div class="panel">
-            <p class="right"><%= Date %> </p>
-            <div class="meal-info">
-                  <% if( Subject ) {%>
-                        <p class="mealname"> <b> Meal Name: </b> <%= Subject %> </p>
-                  <% } else { %>
-                        <p class="mealname"> <b> Meal Name: </b> No Meal Name </p>
-                  <% } %>
-
-                  <p> <b> Food Item(s): </b> </p>
-                        <% _.each(FoodItems, function(item) { %>
-                              <% if(item.Name != "") { %>
-                                    <% if(item.HealthRate == 1) { %>
-                                          <p class="Success Label"><%= item.Name %></p>
-                                    <% } %>
-                                    <% if(item.HealthRate == 2) { %>
-                                          <p class="Regular Label"><%= item.Name %></p>
-                                    <% } %>
-                                    <% if(item.HealthRate == 3) { %>
-                                          <p class="Alert Label"><%= item.Name %></p>
-                                    <% } %>
-                                    <% if(item.HealthRate == null && item.Name != null) { %>
-                                          <p class="Secondary Label"><%= item.Name %></p>
-                                    <% } %>
-                              <% } %>
-                        <% }); %>
-            </div>
-
-            <div class="edit-panel" id= "<%= _id %>" >
-                  <div class="edit-icons right blue">
-                  <i class="foundicon-trash"></i> <span class="delete-link"> Delete </span>
-                  </div>
-                  <h3> Items:  </h3>
+            <p> <b> Food Item(s): </b> </p>
                   <% _.each(FoodItems, function(item) { %>
+                        <% if(item.Name != "") { %>
                               <% if(item.HealthRate == 1) { %>
-                              <div class= "edit-wrapper">
-                                    <div class="alert-box success meal-edit-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span> </div>
-                              </div>
+                                    <p class="Success Label"><%= item.Name %></p>
                               <% } %>
                               <% if(item.HealthRate == 2) { %>
-                                    <div class="alert-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                                    <p class="Regular Label"><%= item.Name %></p>
                               <% } %>
                               <% if(item.HealthRate == 3) { %>
-                                    <div class="alert-box alert"><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                                    <p class="Alert Label"><%= item.Name %></p>
                               <% } %>
-                              <% if(item.HealthRate == null && item.Name != "") { %>
-                                    <div class="alert-box secondary"><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                              <% if(item.HealthRate == null && item.Name != null) { %>
+                                    <p class="Secondary Label"><%= item.Name %></p>
                               <% } %>
+                        <% } %>
                   <% }); %>
-                  <div class="row new-meal-container">
-                        <div class="large-8 columns">
-                          <input class= "new-meal-input" type="text" placeholder="New Meal Item">
-                        </div>
-                        <div class="large-4 columns">
-                              <form class="custom">
-<!--                                 <label for="customDropdown">Select Health Level</label>
- -->                                <div class="custom dropdown small">
-                                          <a href="#" class="current">Medium</a>
-                                          <a href="#" class="selector"></a>
-                                          <ul>
-                                                <li>Healty</li>
-                                                <li>Medium</li>
-                                                <li>Unhealty</li>
-                                          </ul>
-                                    </div>
-                              </form>
-                        </div>
-                  </div>
-                  <a href="#" class="button submit-new-meal-input expand">Send Food Log</a></p>
-            </div>  
-
       </div>
+
+      <div class="edit-panel" id= "<%= _id %>" >
+            <div class="edit-icons right blue">
+            <i class="foundicon-trash"></i> <span class="delete-link"> Delete </span>
+            </div>
+            <h3> Items:  </h3>
+            <% _.each(FoodItems, function(item) { %>
+                        <% if(item.HealthRate == 1) { %>
+                        <div class= "edit-wrapper">
+                              <div class="alert-box success meal-edit-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span> </div>
+                        </div>
+                        <% } %>
+                        <% if(item.HealthRate == 2) { %>
+                              <div class="alert-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                        <% } %>
+                        <% if(item.HealthRate == 3) { %>
+                              <div class="alert-box alert"><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                        <% } %>
+                        <% if(item.HealthRate == null && item.Name != "") { %>
+                              <div class="alert-box secondary"><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                        <% } %>
+            <% }); %>
+            <div class="row new-meal-container">
+                  <div class="small-12 large-8 columns">
+                    <input class= "new-meal-input" type="text" placeholder="New Meal Item">
+                  </div>
+                  <div class="small-12 large-4 columns">
+                        <form class="custom drop-form">
+<!--                                 <label for="customDropdown">Select Health Level</label>
+-->                                <div class="custom dropdown small">
+                                    <a href="#" class="current">Medium</a>
+                                    <a href="#" class="selector"></a>
+                                    <ul>
+                                          <li>Healthy</li>
+                                          <li>Medium</li>
+                                          <li>Unhealthy</li>
+                                    </ul>
+                              </div>
+                        </form>
+                  </div>
+            </div>
+            <a href="#" class="button submit-new-meal-input expand">Send Food Log</a></p>
+      </div>  
+
+</div>
 

@@ -31,9 +31,13 @@ define([
 	          // var newEmailsCol = new Emails();
 	          this.collection.add(myEmail);
 	          var that = this;
-	          myEmail.save().complete(function(){
-	          	that.collection.trigger("refresh");
-	          })
+
+	        this.model.save(myEmail , {
+	            success: function (model, response){
+	              that.collection.trigger("refresh");
+
+	            }
+          	});
 
 	    }
 

@@ -15,10 +15,9 @@ define([
 				"click .delete-fooditem" : "deleteFoodItem",
 				"click .meal-info" : "editModel",
 	    		"click button" : " sendFakeEmail",
-	    		// "mouseenter .panel" : "handleMouseEnter",
-	    		// "mouseleave .panel" : "handleMouseLeave",
 	    		"click .delete-link" : "deleteModel",
-	    		"click .submit-new-meal-input" : "addToModel"
+	    		"click .submit-new-meal-input" : "addToModel",
+	    		"scroll" : "loadMoreMeals"
     	},
 
 		template: _.template(emailTemplate),
@@ -142,15 +141,17 @@ define([
 
 		},
 
-
-		handleMouseEnter : function(e){
-			$(e.currentTarget).find(".edit-icons").toggle();
-		},
-
-		handleMouseLeave : function(e){
-			$(e.currentTarget).find(".edit-icons").toggle();
+		loadMoreMeals : function(e){
+			alert("scroll");
+			console.log("hey");
+			var totalHeight = this.$('> div').height(),
+			scrollTop = this.$el.scrollTop() + this.$el.height(),
+			margin = 200;
+ 
+			if (scrollTop + margin >= totalHeight) {
+			    alert("scroll");
+			}
 		}
-
 
     });
     return EmailView;

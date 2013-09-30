@@ -13,7 +13,7 @@
 
 body { background-color: #fcfcf9;
 		font-size: 16px;
-		line-height: 1.5em;
+		// line-height: 1.5em;
 		color: #3d3f44;
 		font-family: "Calibri", "Helvetica", "Arial", sans-serif;
 
@@ -21,12 +21,6 @@ body { background-color: #fcfcf9;
 p { 
 	margin-bottom: 1em;
 }
-
-a { 
-	text-decoration: none;
-	color: black;
-}
-
 
 hr {
 	margin: 						10px 0px;
@@ -158,8 +152,21 @@ opacity:0.1}
 
 header{
 	height: 50px;
+	margin-top: -5px;
 	margin-bottom: 20px;
+	background-color: #2ba6cb;
 }
+
+h3.white{
+	color:white;
+	color : white  !important;
+}
+
+.logout{
+	color : white  !important;
+	margin-right: 9px;
+}
+
 .center{
 	text-align: center;
 }
@@ -199,8 +206,15 @@ header{
 
 .labels{
 	margin-bottom: 5%;
-	position: absolute;
+	// position: absolute;
+	position: fixed;
+	top:0;
 }
+
+// .fixed{
+// 	position: fixed;
+
+// }
 
 .blue{
 	color: @nice-blue;
@@ -240,5 +254,7 @@ header{
 #form{
 	margin-top: 15%;
 }
-
+.drop-form{
+	width: 100%;
+}
 

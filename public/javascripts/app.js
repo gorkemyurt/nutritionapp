@@ -39,8 +39,8 @@ define([
               }
 
               else{
-              
-                MyApp.welcome.show(new NoEmailView({collection: MyApp.emails }));
+                $(".load").hide();
+                MyApp.welcome.show(new NoEmailView({collection: MyApp.emails, model : new Email() }));
 
               }
         }});

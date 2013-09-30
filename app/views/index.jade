@@ -15,7 +15,7 @@ html(lang='en')
       body
 
         header
-            | <h5 class="white">THIaS IS A TEST, ALPHA v0.0001  <a href="/logout "class="logout"> Logout </a></h5>
+            | <h3 class="white">Nutrition App (Test)  <a href="/logout" class="logout right"> Logout </a></h3>
         section
             div.row.load
                 div.small-4.small-centered.columns(id="facebookG")
@@ -29,15 +29,8 @@ html(lang='en')
                 div.labels.small-12.large-3.medium-3.columns
                     div#label
                     div#form
-                div.small-12.large-9.medium-9.columns
+                div.main-list.small-12.large-9.medium-9.columns
                     #list
-
-
-
-        //- script(id="formView", type="text/template")
-        //-     //- <input id="fake-email" class="fake-email-class" type="text" placeholder="Meal Name..">
-        //-     //- <textarea id="fake-email" type="text" placeholder="Food Log"></textarea>
-        //-     //- <a href="#" class="button expand sendEmail">Send</a>
 
         script(id="NoEmailTemplate", type="text/template")
             <div class="large-12 large-centered columns center">
@@ -60,7 +53,7 @@ html(lang='en')
             <h4 class="center"> You can also start your food log by sending an email to 724b977c9cdd140584b0@cloudmailin.net </h4>
 
         script(id="labelTemplate", type="text/template")
-            <div class= "Success Label cover"> Healthiest </div>
+            <div class= "Success Label cover"> Healthy </div>
             <div class= "Regular Label cover"> Medium Health </div>
             <div class= "Alert Label cover"> Unhealthy </div>
             <div class= "Secondary Label cover"> No Rating </div>
