@@ -26,10 +26,11 @@ define([
 
     function conditional(){
         var that = this;
-        MyApp.list.show(new LoadingView());
+        // MyApp.list.show(new LoadingView());
+
         MyApp.emails.fetch( {success : function(){      
               if(MyApp.emails.length > 0 ){
-
+                  $(".load").hide();
                   MyApp.label.show(new LabelView());
                   MyApp.list.show(new EmailsView({collection: MyApp.emails }));
                   MyApp.form.show(new FormView({ model : new Email(), collection: MyApp.emails  }));
