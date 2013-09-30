@@ -36,7 +36,8 @@ require.config({
     "LabelView" : "views/LabelView",
     'socketio': '../socket.io/socket.io',
     "zepto" : 'lib/zepto',
-    "deferred" : 'lib/deferred1'
+    "deferred" : 'lib/deferred1',
+    "LoadingView" : "views/LoadingView"
     // "zeptoTouch" : 'lib/zeptoTouch'
     // "emailTemplate" : "templates/emailTemplate.html"
 

@@ -6,8 +6,9 @@ define([
 	"Emails",
   "LabelView",
   "NoEmailView",
-  "Email"
-	], function ($, Marionette, EmailsView, FormView, Emails , LabelView, NoEmailView, Email) {
+  "Email",
+  "LoadingView"
+	], function ($, Marionette, EmailsView, FormView, Emails , LabelView, NoEmailView, Email, LoadingView) {
 
     // set up the app instance
     var MyApp = new Backbone.Marionette.Application()
@@ -25,6 +26,7 @@ define([
 
     function conditional(){
         var that = this;
+        MyApp.list.show(new LoadingView());
         MyApp.emails.fetch( {success : function(){      
               if(MyApp.emails.length > 0 ){
 
@@ -46,6 +48,7 @@ define([
     MyApp.addInitializer(function(){
         MyApp.listenTo(MyApp.emails, 'refresh', conditional);
         conditional();
+
     });
 
     MyApp.start();
