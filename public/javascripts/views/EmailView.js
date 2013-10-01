@@ -20,7 +20,7 @@ define([
 			    _.extend(events_hash, {"tap .delete-link": "deleteModel"});
 			    _.extend(events_hash, {"tap .submit-new-meal-input": "addToModel"});
 			    _.extend(events_hash, {"tap .plus-link": "addForm"});
-
+			}
 			// } else {
 			//     _.extend(events_hash, {"click .delete-fooditem" : "deleteFoodItem"});
 			//     _.extend(events_hash, {"click #add-details" : "editModel"});
@@ -114,7 +114,7 @@ define([
 		},
 
 		addToModel : function(e){
-			
+
 			var Name = $(e.currentTarget).parent().find(".new-meal-input").val();
 			var HealthRating = $(e.currentTarget).parent().find(".current").text();
 			var NumberRating = 0;
