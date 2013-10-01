@@ -9,23 +9,48 @@ define([
 	'use strict';
 
 	var EmailView = Backbone.Marionette.ItemView.extend({
-		events:{
+		// events:{
 
-				"tap .delete-fooditem" : "deleteFoodItemTouch",
-				"tap .meal-info" : "editModelTouch"
-				// "click .delete-fooditem" : "deleteFoodItem",
-				// "click .meal-info" : "editModel",
-	   //  		"click button" : " sendFakeEmail",
-	   //  		"click .delete-link" : "deleteModel",
-	   //  		"click .submit-new-meal-input" : "addToModel",
-	   //  		"click .plus-link" : "addForm"
+		// 		"tap .delete-fooditem" : "deleteFoodItemTouch",
+		// 		"tap .meal-info" : "editModelTouch"
+				
+		// 		"click .delete-fooditem" : "deleteFoodItem",
+		// 		"click .meal-info" : "editModel",
 
+	 //    		// "click button" : " sendFakeEmail",
+	 //    		"click .delete-link" : "deleteModel",
+	 //    		"click .submit-new-meal-input" : "addToModel",
+	 //    		"click .plus-link" : "addForm"
+
+	 //    },
+	    events: function(){
+	    	var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/);
+	    	console.log(isMobile);
+	    	var events_hash = {
+    			// insert all the events that go here regardless of mobile or not
+  			};
+			if (isMobile) {
+			    _.extend(events_hash, {"tap .delete-fooditem": "deleteFoodItemTouch"});
+			    _.extend(events_hash, {"tap .meal-info": "editModelTouch"});
+			    _.extend(events_hash, {"tap .delete-link": "deleteModel"});
+			    _.extend(events_hash, {"tap .submit-new-meal-input": "addToModel"});
+			    _.extend(events_hash, {"tap .plus-link": "addForm"});
+
+			} else {
+			    _.extend(events_hash, {"click .delete-fooditem" : "deleteFoodItem"});
+			    _.extend(events_hash, {"click .meal-info" : "editModel"});
+			    _.extend(events_hash, {"click .delete-link" : "deleteModel"});
+			    _.extend(events_hash, {"click .submit-new-meal-input" : "addToModel"});
+			    _.extend(events_hash, {"click .plus-link" : "addForm"});
+
+			}
+			return events_hash;
 	    },
 
 		template: _.template(emailTemplate),
 
 		initialize : function(){
-			console.log(window.mobilecheck);
+			// console.log(window.mobilecheck);
 			_.bindAll(this);
     		this.model.on('change', this.render);
     		this.model.on('change-item', this.renderChange);
