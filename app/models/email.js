@@ -7,7 +7,7 @@ var mongoose = require('mongoose')
 
 var emailSchema = new Schema({
 	From : String,
-	Subject : String,
+	Subject : FoodItemSchema,
 	Body : String,
 	Date: Date,
 	FoodItems : [FoodItemSchema]

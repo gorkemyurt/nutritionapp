@@ -89,3 +89,32 @@ function parseEmailForFoodItems(body){
 		return foodItemsObject;
 	}
 }
+
+
+
+function parseSubjectForFoodItems(body){
+	var foodItems = [];
+	var foodItemsObject = [];
+	var numbersList = body.match(/[0-9]/g);
+	var	mealNameArray = body.split(" ");
+	for (var item in mealNameArray){
+		if (mealNameArray[item] == ""){
+			mealNameArray.splice(item, mealNameArray.length - 1) 
+		}
+	}
+		 
+	console.log(mealNameArray);
+	var mealName = mealNameArray[0];
+
+	if(mealName[0] == " "){
+		mealName = mealName.substring(1)
+	}
+
+	if(mealName[mealName.length] == " "){
+		mealName = fmealName.substring(mealName.length - 1)
+	}
+	console.log({Name : mealName, HealthRate : mealNameArray[mealNameArray.length -1 ]});
+
+	return {Name : mealName, HealthRate : mealNameArray[mealNameArray.length -1 ]}
+
+}

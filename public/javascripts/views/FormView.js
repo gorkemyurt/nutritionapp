@@ -17,15 +17,31 @@ define([
           'click .sendEmail' : 'sendFakeEmail'
         },
 
-        sendFakeEmail: function(){
-          var emailObject =  parseEmailForFoodItems($("#fake-email").val());
+        sendFakeEmail: function(e){
+          var HealthRating = $(e.currentTarget).parent().find(".current").text();
+          // var emailObject =  parseEmailForFoodItems($("#fake-email").val());
+          var NumberRating = 0;
+
+          if(HealthRating == "Healthy"){
+            NumberRating = 1;
+          }
+          else if(HealthRating == "Medium"){
+            NumberRating = 2;
+
+          }
+          else if(HealthRating == "Unhealthy"){
+            NumberRating = 3;
+          }
+          
           var myEmail = new Email({
-              Subject : $("#fake-email-input-area").val(),
+              Subject : {Name : $("#fake-email-input-area").val(), HealthRate : NumberRating},
               Date : new Date(),
-              FoodItems: emailObject
+              FoodItems: []
           });
           $("#fake-email").val("");
           $("#fake-email-input-area").val("");
+          console.log(myEmail);
+
 
           var that = this;
           this.model.save(myEmail , {

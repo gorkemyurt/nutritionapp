@@ -1,14 +1,27 @@
 
-<div class="panel">
+<div class="panel blue">
       <p class="right"><%= Date %> </p>
       <div class="meal-info">
-            <% if( Subject ) {%>
-                  <p class="mealname"> <b> Meal Name: </b> <%= Subject %> </p>
+            <% if( Subject ) { %>
+                  <% if(Subject.HealthRate == 1) { %>
+                        <div class="alert-box success meal-name" > <%= Subject.Name %> </div>
+                  <% } %>
+                  <% if(Subject.HealthRate == 2) { %>
+                        <div class="alert-box meal-name " > <%= Subject.Name %></div>
+                  <% } %>
+                  <% if(Subject.HealthRate == 3) { %>
+                        <div class="alert-box alert meal-name"> <%= Subject.Name %></div>
+                  <% } %>
+                  <% if(Subject.HealthRate == null && Subject.Name != "") { %>
+                        <div class="alert-box secondary meal-name"><%= Subject.Name %></div>
+                  <% } %>
             <% } else { %>
-                  <p class="mealname"> <b> Meal Name: </b> No Meal Name </p>
+                  <p class="mealname"> <b> Meal Name: </b> No Subject Provided </p>
             <% } %>
 
-            <p> <b> Food Item(s): </b> </p>
+           <!--  <% if(FoodItems.length != 0) { %> 
+                  <p> <b>  Details: </b> </p>
+            <% } %>
                   <% _.each(FoodItems, function(item) { %>
                         <% if(item.Name != "") { %>
                               <% if(item.HealthRate == 1) { %>
@@ -24,38 +37,41 @@
                                     <p class="Secondary Label"><%= item.Name %></p>
                               <% } %>
                         <% } %>
-                  <% }); %>
+                  <% }); %> -->
+            <div class="row">
+                  <div class="columns small-12 large-4">
+                        <a href="#" class="button add-details expand">Detailed View</a></p>
+                  </div>
+            </div>
       </div>
 
       <div class="edit-panel" id= "<%= _id %>" >
             <div class="edit-icons right blue">
-            <i class="foundicon-trash"></i> <span class="delete-link"> Delete </span>
+                  <i class="foundicon-trash"></i> <span class="delete-link"> Delete </span>
             </div>
-            <h3> Items:  </h3>
+            <h3> Secondary Items:  </h3>
             <% _.each(FoodItems, function(item) { %>
                         <% if(item.HealthRate == 1) { %>
-                        <div class= "edit-wrapper">
                               <div class="alert-box success meal-edit-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span> </div>
-                        </div>
                         <% } %>
                         <% if(item.HealthRate == 2) { %>
-                              <div class="alert-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                              <div class="alert-box meal-edit-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span></div>
                         <% } %>
                         <% if(item.HealthRate == 3) { %>
-                              <div class="alert-box alert"><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                              <div class="alert-box alert meal-edit-box" data=<%= item.Name %>><%= item.Name %><span class="delete-fooditem right"> X </span></div>
                         <% } %>
                         <% if(item.HealthRate == null && item.Name != "") { %>
-                              <div class="alert-box secondary"><%= item.Name %><span class="delete-fooditem right"> X </span></div>
+                              <div class="alert-box secondary meal-edit-box"><%= item.Name %><span class="delete-fooditem right"> X </span></div>
                         <% } %>
             <% }); %>
-            <div class="row new-meal-container">
-                  <div class="small-12 large-8 columns">
-                    <input class= "new-meal-input" type="text" placeholder="New Meal Item">
+            <div class="new-meal-container">
+            <div class="row">
+                  <div class="small-12 large-7 columns">
+                        <input class= "new-meal-input" type="text" placeholder="Add New Meal Detail">
                   </div>
-                  <div class="small-12 large-4 columns">
+                  <div class="small-7 large-3 columns">
                         <form class="custom drop-form">
-<!--                                 <label for="customDropdown">Select Health Level</label>
--->                                <div class="custom dropdown small">
+                              <div class="custom dropdown small">
                                     <a href="#" class="current">Medium</a>
                                     <a href="#" class="selector"></a>
                                     <ul>
@@ -66,6 +82,10 @@
                               </div>
                         </form>
                   </div>
+                  <div class="small-5 large-2 columns" >
+                        <i class="foundicon-plus"></i> <span class="plus-link"> Add </span>
+                  </div>
+            </div>
             </div>
             <a href="#" class="button submit-new-meal-input expand">Send Food Log</a></p>
       </div>  

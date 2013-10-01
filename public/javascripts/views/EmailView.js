@@ -3,22 +3,24 @@ define([
 	'underscore',
 	'backbone',
 	'marionette',
-	'text!templates/emailTemplate.html'
-], function ($,_, Backbone, Marionette, emailTemplate) {
+	'text!templates/emailTemplate.html',
+	'text!templates/mealDetailTemplate.html'
+], function ($,_, Backbone, Marionette, emailTemplate, mealDeatailTemplate) {
 	'use strict';
 
 	var EmailView = Backbone.Marionette.ItemView.extend({
 		events:{
 
 				"tap .delete-fooditem" : "deleteFoodItemTouch",
-				"tap .meal-info" : "editModelTouch",
-				"click .delete-fooditem" : "deleteFoodItem",
-				"click .meal-info" : "editModel",
-	    		"click button" : " sendFakeEmail",
-	    		"click .delete-link" : "deleteModel",
-	    		"click .submit-new-meal-input" : "addToModel",
-	    		"scroll" : "loadMoreMeals"
-    	},
+				"tap .meal-info" : "editModelTouch"
+				// "click .delete-fooditem" : "deleteFoodItem",
+				// "click .meal-info" : "editModel",
+	   //  		"click button" : " sendFakeEmail",
+	   //  		"click .delete-link" : "deleteModel",
+	   //  		"click .submit-new-meal-input" : "addToModel",
+	   //  		"click .plus-link" : "addForm"
+
+	    },
 
 		template: _.template(emailTemplate),
 
@@ -122,13 +124,14 @@ define([
 			var Name = $(e.currentTarget).parent().find(".new-meal-input").val();
 			var HealthRating = $(e.currentTarget).parent().find(".current").text();
 			var NumberRating = 0;
-			if(HealthRating == "Healty"){
+			if(HealthRating == "Healthy"){
 				NumberRating = 1;
 			}
 			else if(HealthRating == "Medium"){
 				NumberRating = 2;
+
 			}
-			else if(HealthRating == "Unhealty"){
+			else if(HealthRating == "Unhealthy"){
 				NumberRating = 3;
 			}
 			var newFoodItem = {Name: Name, HealthRate: NumberRating.toString()} 
@@ -141,16 +144,9 @@ define([
 
 		},
 
-		loadMoreMeals : function(e){
-			alert("scroll");
-			console.log("hey");
-			var totalHeight = this.$('> div').height(),
-			scrollTop = this.$el.scrollTop() + this.$el.height(),
-			margin = 200;
- 
-			if (scrollTop + margin >= totalHeight) {
-			    alert("scroll");
-			}
+		addForm : function(e){
+			console.log("addd");
+			$(".new-meal-container").append(mealDeatailTemplate);
 		}
 
     });
