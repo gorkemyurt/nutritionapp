@@ -9,36 +9,21 @@ define([
 	'use strict';
 
 	var EmailView = Backbone.Marionette.ItemView.extend({
-		// events:{
-
-		// 		"tap .delete-fooditem" : "deleteFoodItemTouch",
-		// 		"tap .meal-info" : "editModelTouch"
-				
-		// 		"click .delete-fooditem" : "deleteFoodItem",
-		// 		"click .meal-info" : "editModel",
-
-	 //    		// "click button" : " sendFakeEmail",
-	 //    		"click .delete-link" : "deleteModel",
-	 //    		"click .submit-new-meal-input" : "addToModel",
-	 //    		"click .plus-link" : "addForm"
-
-	 //    },
 	    events: function(){
 	    	var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/);
-	    	console.log(isMobile);
 	    	var events_hash = {
     			// insert all the events that go here regardless of mobile or not
   			};
 			if (isMobile) {
-			    _.extend(events_hash, {"tap .delete-fooditem": "deleteFoodItemTouch"});
-			    _.extend(events_hash, {"tap .meal-info": "editModelTouch"});
+			    _.extend(events_hash, {"tap .delete-fooditem": "deleteFoodItem"});
+			    _.extend(events_hash, {"tap #add-details": "editModel"});
 			    _.extend(events_hash, {"tap .delete-link": "deleteModel"});
 			    _.extend(events_hash, {"tap .submit-new-meal-input": "addToModel"});
 			    _.extend(events_hash, {"tap .plus-link": "addForm"});
 
 			} else {
 			    _.extend(events_hash, {"click .delete-fooditem" : "deleteFoodItem"});
-			    _.extend(events_hash, {"click .meal-info" : "editModel"});
+			    _.extend(events_hash, {"click #add-details" : "editModel"});
 			    _.extend(events_hash, {"click .delete-link" : "deleteModel"});
 			    _.extend(events_hash, {"click .submit-new-meal-input" : "addToModel"});
 			    _.extend(events_hash, {"click .plus-link" : "addForm"});
@@ -50,7 +35,6 @@ define([
 		template: _.template(emailTemplate),
 
 		initialize : function(){
-			// console.log(window.mobilecheck);
 			_.bindAll(this);
     		this.model.on('change', this.render);
     		this.model.on('change-item', this.renderChange);
@@ -68,17 +52,17 @@ define([
 		},
 
 		editModel : function(e){
-			if(window.mobilecheck) return
-			$("#" + this.model.id).slideToggle();
-		},
 
-		editModelTouch : function(e){
+			if($(e.currentTarget).text() == "Detailed View"){
+				$(e.currentTarget).text("Close")
+			}
+			else{
+				$(e.currentTarget).text("Detailed View")
+			}
 			$("#" + this.model.id).slideToggle();
-
 		},
 
 		deleteFoodItem : function(e){
-			if(window.mobilecheck) return
 
 			var deletedItem = $(e.currentTarget).parent().text().split("X")[0];
 			deletedItem =  deletedItem.replace(" ","");
@@ -97,22 +81,6 @@ define([
 			this.model.save();
 		},
  
-		deleteFoodItemTouch : function(e){
-			var deletedItem = $(e.currentTarget).parent().text().split("X")[0];
-			deletedItem =  deletedItem.replace(" ","");
-
-			$(e.currentTarget).parent().slideUp(2000);
-
-			var curitems = _.pluck(this.model.get("FoodItems"), "Name");
-			var index = curitems.indexOf(deletedItem);
-			var currentModel = this.model.get("FoodItems");
-
-			currentModel.splice(index,1);
-
-			this.model.set("FoodItems", currentModel);
-			this.SpecialRender($(e.currentTarget).parent().parent());
-			this.model.save();
-		},
 
 		SpecialRender: function(e){
 			    this.isClosed = false;
@@ -146,6 +114,7 @@ define([
 		},
 
 		addToModel : function(e){
+			
 			var Name = $(e.currentTarget).parent().find(".new-meal-input").val();
 			var HealthRating = $(e.currentTarget).parent().find(".current").text();
 			var NumberRating = 0;
@@ -165,14 +134,16 @@ define([
 			this.model.set("FoodItems", currentArray);
 			this.SpecialRender($(e.currentTarget).parent().parent());
 			this.model.save();
-			
+			$(e.currentTarget).preventDefault()
 
-		},
-
-		addForm : function(e){
-			console.log("addd");
-			$(".new-meal-container").append(mealDeatailTemplate);
 		}
+
+		// addForm : function(e){
+		// 	$(".edit-panel").attr("style","overflow:visible");
+		// 	$(e.currentTarget).parent().parent().parent().parent().find(".new-meal-container").append(mealDeatailTemplate);
+
+		// 	// $(".additional-console").height($(".additional-console").height() + 50);
+		// }
 
     });
     return EmailView;
