@@ -166,8 +166,8 @@ h3.white {
 }
 .labels {
   margin-bottom: 5%;
-  position: fixed;
-  top: 0;
+  border-bottom: 1px solid;
+  border-color: #DDDDDD;
 }
 .blue {
   color: #0099cc;
@@ -217,7 +217,7 @@ h3.white {
   width: 220px;
 }
 
-#add-details{
+.add-details{
   height: 55px;
   line-height: 25px !important;
   -webkit-tap-highlight-color:rgba(0,0,0,0);

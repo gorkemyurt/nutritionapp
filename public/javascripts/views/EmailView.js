@@ -16,14 +16,14 @@ define([
   			};
 			if (isMobile) {
 			    _.extend(events_hash, {"tap .delete-fooditem": "deleteFoodItem"});
-			    _.extend(events_hash, {"tap #add-details": "editModel"});
+			    _.extend(events_hash, {"tap .add-details": "editModel"});
 			    _.extend(events_hash, {"tap .delete-link": "deleteModel"});
 			    _.extend(events_hash, {"tap .submit-new-meal-input": "addToModel"});
 			    _.extend(events_hash, {"tap .plus-link": "addForm"});
 
 			} else {
 			    _.extend(events_hash, {"click .delete-fooditem" : "deleteFoodItem"});
-			    _.extend(events_hash, {"click #add-details" : "editModel"});
+			    _.extend(events_hash, {"click .add-details" : "editModel"});
 			    _.extend(events_hash, {"click .delete-link" : "deleteModel"});
 			    _.extend(events_hash, {"click .submit-new-meal-input" : "addToModel"});
 			    _.extend(events_hash, {"click .plus-link" : "addForm"});
@@ -54,7 +54,7 @@ define([
 		},
 
 		editModel : function(e){
-
+			console.log("this is getting called");
 			if($(e.currentTarget).text() == "Detailed View"){
 				$(e.currentTarget).text("Close")
 			}
@@ -103,6 +103,8 @@ define([
 			    this.triggerMethod("item:rendered", this);
 
 			    $("#" + this.model.id).toggle();
+			    $("." + this.model.id).text("Close");
+	
 			    return this;
   		},
 
@@ -130,13 +132,13 @@ define([
 			else if(HealthRating == "Unhealthy"){
 				NumberRating = 3;
 			}
+
 			var newFoodItem = {Name: Name, HealthRate: NumberRating.toString()} 
 			var currentArray = this.model.get("FoodItems");
 			currentArray.push(newFoodItem);
 			this.model.set("FoodItems", currentArray);
 			this.SpecialRender($(e.currentTarget).parent().parent());
 			this.model.save();
-			$(e.currentTarget).preventDefault()
 
 		}
 
