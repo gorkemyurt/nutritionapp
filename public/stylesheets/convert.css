@@ -220,4 +220,5 @@ h3.white {
 #add-details{
   height: 55px;
   line-height: 25px !important;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
