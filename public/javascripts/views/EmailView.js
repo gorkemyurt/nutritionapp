@@ -20,7 +20,7 @@ define([
 			    _.extend(events_hash, {"tap .delete-link": "deleteModel"});
 			    _.extend(events_hash, {"tap .submit-new-meal-input": "addToModel"});
 			    _.extend(events_hash, {"tap .plus-link": "addForm"});
-			
+
 			} else {
 			    _.extend(events_hash, {"click .delete-fooditem" : "deleteFoodItem"});
 			    _.extend(events_hash, {"click #add-details" : "editModel"});
@@ -39,7 +39,9 @@ define([
     		this.model.on('change', this.render);
     		this.model.on('change-item', this.renderChange);
 			var months = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December'];
-			this.model.set("Date", months[new Date(this.model.get("Date")).getMonth()] + " " + new Date(this.model.get("Date")).getUTCDate() + " " + new Date(this.model.get("Date")).getHours() + ":" + new Date(this.model.get("Date")).getMinutes());
+			this.model.set({"Date" : months[new Date(this.model.get("Date")).getMonth()] + " " + new Date(this.model.get("Date")).getUTCDate(), "Time" : new Date(this.model.get("Date")).getHours() + ":" + new Date(this.model.get("Date")).getMinutes()}) ;
+			// this.model.set("Time", new Date(this.model.get("Date")).getHours() + ":" + new Date(this.model.get("Date")).getMinutes());
+			console.log(this.model);
 
 		},
 

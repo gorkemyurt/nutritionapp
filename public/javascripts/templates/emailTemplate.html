@@ -1,10 +1,9 @@
 
 <div class="panel blue">
-      <p class="right"><%= Date %> </p>
+      <div class="right"><%= Date %> | <%= Time %> </div> 
+
       <div class="row meal-info">
-<!--             <div class="columns large-2 small-3 meal-header">
-                  Meal Name
-            </div> -->
+
             <div class="columns large-9 small-12">
                   <% if( Subject ) { %>
                         <% if(Subject.HealthRate == 1) { %>
@@ -69,7 +68,7 @@
                         </div> -->
                   </div>
             </div>
-            <a class="button submit-new-meal-input expand">Send Food Log</a>
+            <a class="button submit-new-meal-input expand">Add Secondary Item</a>
       </div>  
 
 </div>
