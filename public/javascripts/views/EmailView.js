@@ -20,15 +20,15 @@ define([
 			    _.extend(events_hash, {"tap .delete-link": "deleteModel"});
 			    _.extend(events_hash, {"tap .submit-new-meal-input": "addToModel"});
 			    _.extend(events_hash, {"tap .plus-link": "addForm"});
-			}
-			// } else {
-			//     _.extend(events_hash, {"click .delete-fooditem" : "deleteFoodItem"});
-			//     _.extend(events_hash, {"click #add-details" : "editModel"});
-			//     _.extend(events_hash, {"click .delete-link" : "deleteModel"});
-			//     _.extend(events_hash, {"click .submit-new-meal-input" : "addToModel"});
-			//     _.extend(events_hash, {"click .plus-link" : "addForm"});
+			
+			} else {
+			    _.extend(events_hash, {"click .delete-fooditem" : "deleteFoodItem"});
+			    _.extend(events_hash, {"click #add-details" : "editModel"});
+			    _.extend(events_hash, {"click .delete-link" : "deleteModel"});
+			    _.extend(events_hash, {"click .submit-new-meal-input" : "addToModel"});
+			    _.extend(events_hash, {"click .plus-link" : "addForm"});
 
-			// }
+			}
 			return events_hash;
 	    },
 
