@@ -40,17 +40,17 @@ define([
           });
           $("#fake-email").val("");
           $("#fake-email-input-area").val("");
+          console.log("Fake email");
           console.log(myEmail);
 
 
           var that = this;
-          this.model.save(myEmail , {
-            success: function (model, response){
-              that.collection.add(response);
-              console.log(response);
+          myEmail.save(null,{
+            success:function(model){
+              console.log("Saved Successfully");
+              that.collection.add(model)
             }
           });
-
       }
 
     });

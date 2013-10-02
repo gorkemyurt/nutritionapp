@@ -6,12 +6,17 @@ var mongoose = require('mongoose')
 exports.home = function(req,res){
 	res.render('index')
 }
+
 exports.updateEmail = function(req, res){
+  console.log("UPDATE MAIL IS GETTING CALLED")
   var update = req.body;
   var id = req.url.split("/")[2];
   Email.find({_id: id} , function(err, email){
-      email = new Email(update);
-      email.save()
+      email = new Email(update)
+      email.remove();
+      email.save(function(err){
+        console.log(err);
+      })
   });
   User.findOne({googleID : req.user.id}, function(err, user){
       user.SentEmails.id(id).remove();

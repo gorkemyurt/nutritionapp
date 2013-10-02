@@ -1,9 +1,8 @@
 var mongoose = require('mongoose')
     ,Schema = mongoose.Schema
-   , FoodItemSchema = require('../models/fooditem.js');
-
-
-
+   , FoodItemSchema = require('../models/fooditem.js')
+   // , UserSchema = require('../models/user.js').schema
+   // , User = require('../models/user.js').model
 
 var emailSchema = new Schema({
 	From : String,
@@ -11,9 +10,12 @@ var emailSchema = new Schema({
 	Body : String,
 	Date: Date,
 	FoodItems : [FoodItemSchema]
-	// Owner : User
+	// Owner : { type : Schema.Types.ObjectId , ref: "User" }
 	// Logs : [{type: Schema.ObjectId, ref: 'events'}]
 });
 
-
-mongoose.model('Email', emailSchema);
+module.exports = {
+	model: mongoose.model('Email', emailSchema),
+	schema : emailSchema 
+}
+// mongoose.model('Email', emailSchema);

@@ -38,10 +38,8 @@ define([
 			_.bindAll(this);
     		this.model.on('change', this.render);
     		this.model.on('change-item', this.renderChange);
-			var months = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December'];
-			this.model.set({"Date" : months[new Date(this.model.get("Date")).getMonth()] + " " + new Date(this.model.get("Date")).getUTCDate(), "Time" : new Date(this.model.get("Date")).getHours() + ":" + new Date(this.model.get("Date")).getMinutes()}) ;
 			// this.model.set("Time", new Date(this.model.get("Date")).getHours() + ":" + new Date(this.model.get("Date")).getMinutes());
-			console.log(this.model);
+			// console.log(this.model);
 
 		},
 

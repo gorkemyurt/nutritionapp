@@ -1,7 +1,11 @@
 var mongoose = require('mongoose')
     ,Schema = mongoose.Schema
-    , Email = mongoose.model('Email')
-   , EmailSchema = mongoose.model('Email').schema;
+    // , Email = require('../models/email.js').model
+  	, Email = mongoose.model('Email')
+   , EmailSchema = require('../models/email.js').schema
+
+
+console.log(Email);
 
 var userSchema = new Schema({
 	googleID : String,
@@ -13,12 +17,12 @@ var userSchema = new Schema({
 	// Logs : [{type: Schema.ObjectId, ref: 'events'}]
 });
 
+
+
 userSchema.statics = {
 
 	findOrCreate : function ( query , profile , cb) {
 		var that = this;
-		// console.log(profile._raw);
-		// console.log(profile.emails[0].value);
 		this.find({googleID : profile.id})
 			.exec(function (err, user){
 				if(user.length != 0){
@@ -41,9 +45,11 @@ userSchema.statics = {
 	},
 
 	findAndStoreEmail : function (senderEmail , incomingEmail, cb){
+		var Usr = this;
 		this.find({email : senderEmail})
 			.exec(function (err, user){
 				if(user.length != 0){
+					// incomingEmail.Owner = new Usr(user);
 					var newEmail = new Email(incomingEmail);
 					newEmail.save(function (err){
 						user[0].SentEmails.push(newEmail);
@@ -53,15 +59,17 @@ userSchema.statics = {
 				}
 				else{
 					return "user doesnt exist!"
-				
 				}
 			})
-	
-
 	}
-
-
 
 }
 
-mongoose.model('User', userSchema);
+module.exports =  {
+	model :  mongoose.model('User', userSchema),
+	schema : userSchema
+}
+
+
+
+// mongoose.model('User', userSchema);
