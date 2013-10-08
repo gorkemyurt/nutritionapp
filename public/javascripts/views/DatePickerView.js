@@ -28,10 +28,7 @@ define([
 
         nextDay : function(){
         	var tempDate = this.model.get("displayDate");
-        	console.log(tempDate);
         	var newDate = tempDate.getTime() + 86400000 ;
-        	console.log(newDate);
-
         	if( newDate > new Date().getTime()){
         		alert("this is a time machine that only allows time travel to the past");
         		//it means user wants to know about future, display warning 

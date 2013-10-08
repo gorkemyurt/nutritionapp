@@ -12,7 +12,7 @@ module.exports = function (passport, config, env) {
 	  	var URL = 'http://staginggorkemnutrition.herokuapp.com/oauth2callback'	
 	  }
 	  else{
-	  	var URL = 'http://gorkemnutrition.herokuapp.com/oauth2callback'	    // realm: 'http://localhost:3000'
+	  	var URL = 'http://karrot.herokuapp.com/oauth2callback'	    // realm: 'http://localhost:3000'
 
 	  }
 	  passport.serializeUser(function(user, done) {
