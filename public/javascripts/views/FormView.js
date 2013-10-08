@@ -18,9 +18,15 @@ define([
         },
 
         sendFakeEmail: function(e){
-          var HealthRating = $(e.currentTarget).parent().find(".current").text();
-          // var emailObject =  parseEmailForFoodItems($("#fake-email").val());
+          var HealthRating = $(e.currentTarget).parent().find(".healthrate").text();
+          var MealType = $(e.currentTarget).parent().find(".typeselect").text();
+          console.log(MealType);
+          console.log(HealthRating);
           var NumberRating = 0;
+          var TypeNumber = 0;
+          if(MealType == "Breakfast"){
+            TypeNumber = 1;
+          }
 
           if(HealthRating == "Healthy"){
             NumberRating = 1;
@@ -36,19 +42,17 @@ define([
           var myEmail = new Email({
               Subject : {Name : $("#fake-email-input-area").val(), HealthRate : NumberRating},
               Date : new Date(),
-              FoodItems: []
+              FoodItems: [],
+              Type : 1
           });
           $("#fake-email").val("");
           $("#fake-email-input-area").val("");
-          console.log("Fake email");
-          console.log(myEmail);
-
-
           var that = this;
+          console.log(that);
           myEmail.save(null,{
             success:function(model){
               console.log("Saved Successfully");
-              that.collection.add(model)
+              that.collection.add(model);
             }
           });
       }

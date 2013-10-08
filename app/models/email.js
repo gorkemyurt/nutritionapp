@@ -9,7 +9,8 @@ var emailSchema = new Schema({
 	Subject : FoodItemSchema,
 	Body : String,
 	Date: Date,
-	FoodItems : [FoodItemSchema]
+	FoodItems : [FoodItemSchema],
+	Type : Number
 	// Owner : { type : Schema.Types.ObjectId , ref: "User" }
 	// Logs : [{type: Schema.ObjectId, ref: 'events'}]
 });

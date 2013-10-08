@@ -127,7 +127,7 @@ header {
   height: 50px;
   margin-top: -5px;
   margin-bottom: 20px;
-  background-color: #2ba6cb;
+  background-color: #5da423;
 }
 h3.white {
   color: white;
@@ -222,6 +222,8 @@ h3.white {
   line-height: 25px !important;
   -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
+
+.empty-meal-form{display: none}
 
 *{
 /* Prevent any object from being highlighted upon touch event*/

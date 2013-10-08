@@ -35,9 +35,15 @@ require.config({
     "parseEmail" :  "parsing/parseEmail",
     "LabelView" : "views/LabelView",
     'socketio': '../socket.io/socket.io',
+    // 'stream': '../socket.io/socket.io',
+
     "zepto" : 'lib/zepto',
     "deferred" : 'lib/deferred1',
-    "LoadingView" : "views/LoadingView"
+    "LoadingView" : "views/LoadingView",
+    "DatePickerView" : "views/DatePickerView",
+    "EmptyMealView" : "views/EmptyMealView",
+    "ListView" : "views/ListView",
+    "currentDate" : "models/currentDate"
     // "zeptoTouch" : 'lib/zeptoTouch'
     // "emailTemplate" : "templates/emailTemplate.html"
 

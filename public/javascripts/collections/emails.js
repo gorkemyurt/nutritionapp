@@ -14,6 +14,9 @@ define([
 	    model : emailModel,
 
 	   	initialize : function() {
+	   		// _.bindAll(this, 'onModelSaved');
+	   		this.on('change', this.onModelSaved , this);
+    		// this.model.on('sync', this.onModelSaved);
 	   		var that = this;
 		    var socket = io.connect();
 
@@ -24,6 +27,9 @@ define([
 				that.add(newEmail);
 			});
 
+	   	},
+	   	onModelSaved : function(model, val, options){
+	   		console.log("I am in my collection");
 	   	}
 	
 	});

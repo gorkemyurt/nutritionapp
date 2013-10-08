@@ -35,6 +35,7 @@ define([
 		template: _.template(emailTemplate),
 
 		initialize : function(){
+			console.log("email")
 			_.bindAll(this);
     		this.model.on('change', this.render);
     		this.model.on('change-item', this.renderChange);

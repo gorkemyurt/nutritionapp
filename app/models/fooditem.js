@@ -6,8 +6,7 @@ var mongoose = require('mongoose')
 var FoodItemSchema = new Schema({
 	Name: String,
 	Restaurant: String,
-	HealthRate: Number,
-	Type: String
+	HealthRate: Number
 });
 
 

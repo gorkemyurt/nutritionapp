@@ -1,8 +1,10 @@
 var mongoose = require('mongoose')
   , User = mongoose.model('User')
  , http = require('https')
+ , url = require('url')
  ,querystring = require('querystring')
  , global = require('../../global.js')
+ , _ = require('underscore')
 
 exports.login = function(req,res){
 	if(req.user){
@@ -18,8 +20,30 @@ exports.login = function(req,res){
 }
 
 exports.emails = function(req,res){
+	var url_parts = url.parse(req.url, true);
+	var query = url_parts.query;
+	var date = new Date(query.Date);
+	date.setHours(12);
+	date.setMinutes(0);
+	date.setSeconds(0);
+	// date.setMilliseconds(0);
+	console.log(date);
 	User.findOne({googleID : req.user.id},function(err, user){
-		res.send(user.SentEmails);
+		if(date){
+			var filteredEmail = _.filter(user.SentEmails, function(mail){
+				return mail.Date.getTime() == date.getTime();
+			});
+			res.send({data: filteredEmail, render : true});
+		}
+		else{
+			if(user.SentEmails == []){
+				res.send({data : user.SentEmails, render : false});
+			}
+			else{
+				res.send({data : user.SentEmails, render : true});
+			}
+		}
+		
 	})
 }
 

@@ -39,7 +39,8 @@ define([
 	        var myEmail = new Email({
 	              Subject : {Name : $(".input-meal-name").val(), HealthRate: NumberRating},
 	              Date : new Date(),
-	              FoodItems: []
+	              FoodItems: [],
+	              Type : 1
 	        });
 	        // var newEmailsCol = new Emails();
             this.collection.add(myEmail);

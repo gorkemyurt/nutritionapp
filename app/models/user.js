@@ -5,8 +5,6 @@ var mongoose = require('mongoose')
    , EmailSchema = require('../models/email.js').schema
 
 
-console.log(Email);
-
 var userSchema = new Schema({
 	googleID : String,
 	accessToken : String,
@@ -52,6 +50,12 @@ userSchema.statics = {
 					// incomingEmail.Owner = new Usr(user);
 					var newEmail = new Email(incomingEmail);
 					newEmail.save(function (err){
+						newEmail.Date.setHours(12);
+						newEmail.Date.setMinutes(0);
+						newEmail.Date.setSeconds(0);
+						newEmail.Date.setMilliseconds(0);
+
+						console.log(newEmail);
 						user[0].SentEmails.push(newEmail);
 						user[0].save();
 						cb(newEmail);

@@ -8,7 +8,6 @@ exports.home = function(req,res){
 }
 
 exports.updateEmail = function(req, res){
-  console.log("UPDATE MAIL IS GETTING CALLED")
   var update = req.body;
   var id = req.url.split("/")[2];
   Email.find({_id: id} , function(err, email){

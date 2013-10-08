@@ -24,14 +24,16 @@ html(lang='en')
                     div.facebook_blockG(id="blockG_2")
                     div.facebook_blockG(id="blockG_3")
             div.row
-                div.large-centered
+                div.large-centered.center
                     #welcome
             div.row
                 div.labels.small-12.large-3.medium-3.columns
                     div#label
                     div#form
-                div.main-list.small-12.large-9.medium-9.columns
-                    #list
+                div.main-list.small-12.large-9.medium-9.columns.center
+                    div#datePicker
+                    div#list 
+
 
         script(id="NoEmailTemplate", type="text/template")
             <div class="large-12 large-centered columns center">
@@ -56,6 +58,15 @@ html(lang='en')
             <li>Healthy</li>
             <li>Medium</li>
             <li>Unhealthy</li>
+            </ul>
+            </div>
+            <div class="custom dropdown">
+            <a href="#" class="current typeselect">Lunch</a>
+            <a href="#" class="selector"></a>
+            <ul>
+            <li>Breakfast</li>
+            <li>Lunch</li>
+            <li>Dinner</li>
             </ul>
             </div>
             </form>
