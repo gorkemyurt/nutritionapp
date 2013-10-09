@@ -4,9 +4,10 @@ define([
 	'backbone',
 	'marionette',
 	"currentDate",
+    "moment",
 	'text!templates/datePickerTemplate.html'
 
-], function ($, _, Backbone, Marionette, currentDate , datePickerTemplate) {
+], function ($, _, Backbone, Marionette, currentDate , moment, datePickerTemplate) {
 	'use strict';
 
 	var LabelView = Backbone.Marionette.ItemView.extend({
@@ -27,28 +28,24 @@ define([
         },
 
         nextDay : function(){
-        	var tempDate = this.model.get("displayDate");
-        	var newDate = tempDate.getTime() + 86400000 ;
-        	if( newDate > new Date().getTime()){
-        		alert("this is a time machine that only allows time travel to the past");
-        		//it means user wants to know about future, display warning 
-        	}
-        	else{
-        		//triggers a refresh which is going to fetch the new date's meals from the database
-        		this.trigger("refresh", new Date (newDate ) );
-        		this.model.set("displayDate" , new Date(newDate));
-        	}
 
+        	var tempDate = this.model.get("displayDate");
+        	var newDate = moment(tempDate, 'dddd, MMMM DD YYYY').add('days' ,1 )
+    		//triggers a refresh which is going to fetch the new date's meals from the database
+            this.trigger("refresh", newDate._d);
+            this.model.set("displayDate" , moment(new Date(newDate)).format('dddd, MMMM DD YYYY'));
+            this.model.set("timeFromNow", moment(new Date(newDate)).from([moment().year(), moment().month() ,moment().date()]));
         },
 
         previousDay: function(){
         	var tempDate = this.model.get("displayDate");
-        	console.log(tempDate);
-        	var newDate = tempDate.getTime() - 86400000 ;
-        	console.log(new Date(newDate));
+            console.log(moment(tempDate,  'dddd, MMMM DD YYYY'));
+        	var newDate = moment(tempDate , 'dddd, MMMM DD YYYY').subtract('days' , 1);
 			//triggers a refresh which is going to fetch the new date's meals from the database
-			this.trigger("refresh", new Date (newDate ) );
-			this.model.set("displayDate" , new Date(newDate));
+			this.trigger("refresh", newDate._d);
+			this.model.set("displayDate" , moment(new Date(newDate)).format('dddd, MMMM DD YYYY'));
+            this.model.set("timeFromNow", moment(new Date(newDate)).from([moment().year(), moment().month(),moment().date()]));
+
 
         }
 

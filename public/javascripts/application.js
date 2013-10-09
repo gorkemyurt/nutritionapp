@@ -9,14 +9,33 @@ require.config({
     'marionette' : 'lib/backbone.marionette',
     'localStorage' : 'lib/backbone.localStorage',
     'less' : 'lib/less',
+    'socketio': '../socket.io/socket.io',
+    'moment' : 'lib/moment.min',
+    "zepto" : 'lib/zepto',
+    "deferred" : 'lib/deferred1',
+
+//backbone app
+    "MyApp" : 'app',
+
+//backbone models and collections
     'Email' : 'models/email',
     "Emails" : 'collections/emails',
+    "currentDate" : "models/currentDate",
+
+//backbone views
     "FormView" : 'views/FormView',
     "EmailsView" : 'views/EmailsView',
     "EmailView" : 'views/EmailView',
     "NoEmailView" : 'views/NoEmailView',
     "FormView" : 'views/FormView',
-    "MyApp" : 'app',
+    "LoadingView" : "views/LoadingView",
+    "DatePickerView" : "views/DatePickerView",
+    "EmptyMealView" : "views/EmptyMealView",
+    "ListView" : "views/ListView",
+    "parseEmail" :  "parsing/parseEmail",
+    "LabelView" : "views/LabelView",    
+
+//foundation
     "foundation": "foundation/foundation",
     "foundation.alerts": "foundation/foundation.alerts",
     "foundation.clearing": "foundation/foundation.clearing",
@@ -31,21 +50,8 @@ require.config({
     "foundation.reveal": "foundation/foundation.reveal",
     "foundation.section": "foundation/foundation.section",
     "foundation.tooltips": "foundation/foundation.tooltips",
-    "foundation.topbar": "foundation/foundation.topbar",
-    "parseEmail" :  "parsing/parseEmail",
-    "LabelView" : "views/LabelView",
-    'socketio': '../socket.io/socket.io',
-    // 'stream': '../socket.io/socket.io',
+    "foundation.topbar": "foundation/foundation.topbar"
 
-    "zepto" : 'lib/zepto',
-    "deferred" : 'lib/deferred1',
-    "LoadingView" : "views/LoadingView",
-    "DatePickerView" : "views/DatePickerView",
-    "EmptyMealView" : "views/EmptyMealView",
-    "ListView" : "views/ListView",
-    "currentDate" : "models/currentDate"
-    // "zeptoTouch" : 'lib/zeptoTouch'
-    // "emailTemplate" : "templates/emailTemplate.html"
 
   },
   shim: {

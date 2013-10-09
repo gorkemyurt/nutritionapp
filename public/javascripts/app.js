@@ -10,8 +10,9 @@ define([
   "LoadingView",
   "DatePickerView",
   "ListView",
-  "currentDate"
-	], function ($, Marionette, EmailsView, FormView, Emails , LabelView, NoEmailView, Email, LoadingView, DatePickerView, ListView, currentDate) {
+  "currentDate",
+  "moment"
+	], function ($, Marionette, EmailsView, FormView, Emails , LabelView, NoEmailView, Email, LoadingView, DatePickerView, ListView, currentDate, moment) {
 
     // set up the app instance
     var MyApp = new Backbone.Marionette.Application()
@@ -29,7 +30,8 @@ define([
 
 
     MyApp.emails = new Emails();
-    MyApp.datePickerView = new DatePickerView({model : new currentDate({ displayDate : new Date()})});
+    console.log(moment());
+    MyApp.datePickerView = new DatePickerView({model : new currentDate({ displayDate : moment().format('dddd, MMMM DD YYYY'), timeFromNow : undefined})});
 
     function conditional(dataObject){
         var that = this;

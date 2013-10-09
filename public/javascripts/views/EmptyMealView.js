@@ -5,9 +5,10 @@ define([
 	'marionette',
   'parseEmail',
   'Email',
+  'moment',
   'text!templates/emptyMealTemplate.html'
 
-  ], function ($,_, Backbone, Marionette, parseEmail, Email, emptyMealTemplate) {
+  ], function ($,_, Backbone, Marionette, parseEmail, Email, moment, emptyMealTemplate) {
 	'use strict';
 
     var EmptyMealView = Backbone.Marionette.ItemView.extend({
@@ -49,7 +50,7 @@ define([
           console.log($(e.currentTarget).parent().parent().parent().parent().find(".form-input-area").val())
           var myEmail = new Email({
               Subject : {Name : $(e.currentTarget).parent().parent().parent().parent().find(".form-input-area").val(), HealthRate : NumberRating},
-              Date : new Date($(".currentDate").text()),
+              Date : moment($(".currentDate").text(),'dddd, MMMM DD YYYY' )._d,
               FoodItems: [],
               Type : this.options.type
           });

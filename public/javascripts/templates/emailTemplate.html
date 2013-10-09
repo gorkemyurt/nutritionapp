@@ -12,7 +12,7 @@
 </div> -->
 <div class="panel blue">
       <div class="row meal-info">
-            <div class="columns large-9 small-12">
+            <div class="columns small-12">
                   <% if( Subject ) { %>
                         <% if(Subject.HealthRate == 1) { %>
                               <div class="alert-box success meal-name" > <%= Subject.Name %> </div>
@@ -30,8 +30,12 @@
                         <p class="mealname"> <b> Meal Name: </b> No Subject Provided </p>
                   <% } %>
             </div>
-            <div class="columns small-12 large-3">
-                  <div class="button success expand add-details <%= _id %> ">Detailed View</div></p>
+      </div>
+      <div class="row">
+            <div class="columns small-12 small-centered">
+                  <img id="up-arrow" class="carrot-arrow add-details" src="/images/carrot-arrow-up.png">
+<!--                   <i id="up-arrow" class="foundicon-down-arrow add-details"></i>
+ -->                        <!-- <div class="button radius success expand add-details <%= _id %> ">Detailed View</div></p> -->
             </div>
       </div>
       <div class="edit-panel" id= "<%= _id %>" >
@@ -76,7 +80,7 @@
                         </div> -->
                   </div>
             </div>
-            <a class="button submit-new-meal-input expand">Add Secondary Item</a>
+            <a class="button submit-new-meal-input radius expand">Add Secondary Item</a>
       </div>  
 
 </div>

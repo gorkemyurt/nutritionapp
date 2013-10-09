@@ -53,13 +53,21 @@ define([
 		},
 
 		editModel : function(e){
-			console.log("this is getting called");
-			if($(e.currentTarget).text() == "Detailed View"){
-				$(e.currentTarget).text("Close")
+			if($(e.currentTarget).attr("id") == 'up-arrow'){
+				$(e.currentTarget).parent().html('<img id="down-arrow" class="carrot-arrow add-details" src="/images/carrot-arrow-down.png">')
 			}
 			else{
-				$(e.currentTarget).text("Detailed View")
+				$(e.currentTarget).parent().html('<img id="up-arrow" class="carrot-arrow add-details" src="/images/carrot-arrow-up.png">')
 			}
+			// $(e.currentTarget).parent().html("<i class='foundicon-up-arrow add-details'></i>")
+			$(e.currentTarget).toggle();
+
+			// if($(e.currentTarget).text() == "Detailed View"){
+			// 	$(e.currentTarget).text("Close")
+			// }
+			// else{
+			// 	$(e.currentTarget).text("Detailed View")
+			// }
 			$("#" + this.model.id).slideToggle();
 		},
 

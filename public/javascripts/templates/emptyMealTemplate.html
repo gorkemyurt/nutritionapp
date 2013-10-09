@@ -1,24 +1,35 @@
-<a href="#" class="button success expand show-form">Add Meal</a>
+<a href="#" class="button radius success large-5 small-12 show-form">Add Meal</a>
 
 <div class="empty-meal-form">
-  <input type="text" class="form-input-area" placeholder="Meal Name..">
-  <form class="custom drop-form form-dropdown">
-      <div class="custom dropdown">
-            <a href="#" class="current healthrate">Medium</a>
-            <a href="#" class="selector"></a>
-            <ul>
-                  <li>Healthy</li>
-                  <li>Medium</li>
-                  <li>Unhealthy</li>
-            </ul>
+      <div class="back-to-form-container row">
+        <div class="columns small-12">
+          <span class="right back-to-form"><i class="foundicon-remove"></i></span>
+        </div>
       </div>
-  </form>
-  <div class="row">
-      <div class="columns large-2 small-12">
-        <a href="#" class="button secondary expand back-to-form"> <i class="foundicon-left-arrow"></i> </a>
+      <div class="row">
+            <div class="columns large-4 small-12">
+                <input type="text" class="form-input-area" placeholder="Meal Name..">
+            </div>
+            <div class="columns large-4 small-12">
+                <input type="text" class="form-input-area" placeholder="Restaurant Name..">
+            </div>
+            <div class="columns small-4">
+                <form class="custom drop-form form-dropdown">
+                    <div class="custom dropdown">
+                          <a href="#" class="current healthrate">Medium</a>
+                          <a href="#" class="selector"></a>
+                          <ul>
+                                <li>Healthy</li>
+                                <li>Medium</li>
+                                <li>Unhealthy</li>
+                          </ul>
+                    </div>
+                </form>
+            </div>
+          </div>
+      <div class="row">
+          <div class="columns large-4 large-centered small-12">
+              <a href="#" class="button success medium expand radius send-email">Submit</a>
+          </div>
       </div>
-      <div class="columns large-10 small-12">
-        <a href="#" class="button success expand send-email"> Send Email</a>
-      </div>
-  </div>
 </div>
