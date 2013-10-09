@@ -1,8 +1,13 @@
-<a class="success radius button previousDay"> <i class="foundicon-left-arrow"></i> </a>
-<span class="currentDate"> <%= displayDate %></span>
-<a class="success radius button nextDay"> <i class="foundicon-right-arrow"></i> </a>
+<div class ="row">
+	<div class="columns small-12">
+		<a class="success radius small button previousDay"> <i class="foundicon-left-arrow"></i> </a>
+		<span class="currentDate"> <%= displayDate %></span>
+		<a class="success radius small button nextDay"> <i class="foundicon-right-arrow"></i> </a>
+	</div>
+</div>
 <% if(timeFromNow)  { %>
 	<div class="row">
 		<div class="timefromNow columns small-12"> <span class="right"> <%= timeFromNow %> </span></div>
 	</div>
 <% } %>
+
