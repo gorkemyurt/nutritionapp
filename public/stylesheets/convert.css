@@ -260,6 +260,18 @@ h3.white {
   height: 50px;
 }
 
+.edit-title{
+  top: 2px;
+  left: 1px;
+  position: absolute;
+  width: 678px;
+  background-color: #2ba6cb !important;
+  border: none !important;
+  color: white !important;
+  font-size: 22px !important;
+  font-weight: bold !important;
+},
+
 .currentDate{
   font-family: 'Kite One', sans-serif !important;
   font-size: 14px;

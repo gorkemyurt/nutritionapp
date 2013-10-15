@@ -10,7 +10,9 @@ define([
 	'use strict';
 
     var ListView = Backbone.Marionette.Layout.extend({
-    	template : _.template(ListViewTemplate),
+    	template : function(){
+    		return _.template(ListViewTemplate);
+    	}, 
     	regions :{
 	    	breakfast : "#breakfast",
 	        lunch : "#lunch",

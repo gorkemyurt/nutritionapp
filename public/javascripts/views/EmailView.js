@@ -27,6 +27,10 @@ define([
 			    _.extend(events_hash, {"click .delete-link" : "deleteModel"});
 			    _.extend(events_hash, {"click .submit-new-meal-input" : "addToModel"});
 			    _.extend(events_hash, {"click .plus-link" : "addForm"});
+			    _.extend(events_hash, {"click .meal-name" : "editName"});
+			    _.extend(events_hash, {"keyup .edit-title" : "submitEditName"});
+
+
 
 			}
 			return events_hash;
@@ -39,9 +43,23 @@ define([
 			_.bindAll(this);
     		this.model.on('change', this.render);
     		this.model.on('change-item', this.renderChange);
-			// this.model.set("Time", new Date(this.model.get("Date")).getHours() + ":" + new Date(this.model.get("Date")).getMinutes());
-			// console.log(this.model);
 
+		},
+
+		submitEditName : function(e){
+			if ( e.keyCode === 13 ) { // 13 is enter key
+				console.log("enter pressed");
+			}
+		},
+
+		editName : function(e){
+			var target = $(e.currentTarget).children(".edit-title-container");
+			var currentTargetText = $(e.currentTarget).text();
+			console.log(currentTargetText);
+			if( target.css('display') == 'none') {
+				$(e.currentTarget).children((".edit-title-container")).show();
+				$(e.currentTarget).children(".edit-title-container").find(".edit-title").val(currentTargetText);
+			}
 		},
 
 		sendFakeEmail : function(e){
@@ -146,6 +164,10 @@ define([
 			this.model.set("FoodItems", currentArray);
 			this.SpecialRender($(e.currentTarget).parent().parent());
 			this.model.save();
+
+		},
+
+		onRender: function(){
 
 		}
 

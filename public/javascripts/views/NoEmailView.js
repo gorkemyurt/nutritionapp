@@ -13,8 +13,6 @@ define([
 
 	var NoEmailView = Backbone.Marionette.ItemView.extend({
 
-		// template: _.template(NoEmailTemplate),
-
 		template: "#NoEmailTemplate",
 
 		events:{

@@ -17,10 +17,6 @@ define([
         	"click .previousDay" : "previousDay"
         },
 		
-        // template: function(){
-        // 	return _.template(datePickerTemplate);
-        // },
-
         template : _.template(datePickerTemplate),
         
         initialize: function() {
